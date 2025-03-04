@@ -1,12 +1,12 @@
 # Blast2Tree
-A pipeline to quickly get genus identification for many genomes of unknown classification.
+A linux pipeline to quickly get genus identification for many genomes of unknown classification.
 - Requires a fasta file with reference markers for each of the species at your chosen classification level
 - a single fasta file containing the best representation from the reference markers
 - 
 
 # How to install
 - [Download](https://github.com/CallinCeriani/Blast2Tree/archive/refs/tags/Versions.tar.gz)
-- Install Conda env
+- Install with conda env create -f Blast2Tree_environment.yml
 - set Blast2Tree.sh to path
 - Referenca.fa amd Marker.fa
 
