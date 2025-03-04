@@ -1,5 +1,5 @@
 # Blast2Tree
-A pipeline to quickly get species identification for genomes.
+A pipeline to quickly get genus identification for genomes.
 -
 -
 -
