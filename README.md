@@ -4,6 +4,15 @@ A linux pipeline to quickly get genus identification for many genomes of unknown
 - a single fasta file containing the best representation from the reference markers
 - 
 
+Utilizes: 
+- [blast](https://anaconda.org/bioconda/blast) 
+- [bedtools](https://anaconda.org/bioconda/bedtools)
+- [cap3](https://anaconda.org/bioconda/cap3)
+- [bedtools](https://anaconda.org/bioconda/bedtools)
+- [mafft](https://anaconda.org/bioconda/mafft)
+- [trimal](https://anaconda.org/bioconda/trimal)
+- [iqtree](https://anaconda.org/bioconda/iqtree)
+
 ## How to install
 - [Download](https://github.com/CallinCeriani/Blast2Tree/archive/refs/tags/Versions.tar.gz)
 - Install with `conda env create -f Blast2Tree_environment.yml`
@@ -37,15 +46,6 @@ A linux pipeline to quickly get genus identification for many genomes of unknown
 > This value is the minimum length you are willing to compare the gene you specified after extraction. Sequences above this Cutvalue will not be reconstructed. Therefore, knowing your expected sequence size (65% is good starting point) is important as the greater the length of the sequence the more resolution. 
 
 ## Analysis functions
-Utilizes: 
-- [blast](https://anaconda.org/bioconda/blast) 
-- [bedtools](https://anaconda.org/bioconda/bedtools)
-- [cap3](https://anaconda.org/bioconda/cap3)
-- [bedtools](https://anaconda.org/bioconda/bedtools)
-- [mafft](https://anaconda.org/bioconda/mafft)
-- [trimal](https://anaconda.org/bioconda/trimal)
-- [iqtree](https://anaconda.org/bioconda/iqtree)
-
 --build
 > Creates blastdb for each genome and does blast search against your provided reference markers, thereafter, extracting the relevant hit sequences.
 
