@@ -32,9 +32,7 @@ Utilizes:
 
 --THRESHOLD
 > This is the minimum length required for final processing. Sequence still not making this value are removed from analysis and are moved to a leftovers.fasta file
-
 --MARKER_BLAST_ID
->
 
 --EXTRACTED_MARKER_OUT
 >
@@ -46,6 +44,7 @@ Utilizes:
 > This value is the minimum length you are willing to compare the gene you specified after extraction. Sequences above this Cutvalue will not be reconstructed. Therefore, knowing your expected sequence size (65% is good starting point) is important as the greater the length of the sequence the more resolution. 
 
 ## Analysis functions
+
 --build
 > Creates blastdb for each genome and does blast search against your provided reference markers, thereafter, extracting the relevant hit sequences.
 
@@ -59,10 +58,6 @@ Utilizes:
 > This does alignment, trimming, and constructs the tree.
 
 ## Utility functions
-
---variables|--l
-> Display BUSCO, Augustus and NCBI taxonomic ID options or databases.
-
 --rename_contigs|--K
 > Renames all .fasta contigs in a directory based on filename(s). Output is in the directory renamed_contigs. Built into --busco_batch.
 
