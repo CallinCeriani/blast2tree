@@ -14,13 +14,13 @@ A pipeline to quickly get species identification for genomes.
 
 # Processing parameters
 
---threads|-t|--Cpus
+--threads|-t|--Cpus       
 default = 1
 
---working_directory|--wd
+--working_directory|--wd 
 default = uses your current directory. $PWD
 
---Run_name|--s
+--s
 default = None. Run name and named logfile.
 
 --THRESHOLD
