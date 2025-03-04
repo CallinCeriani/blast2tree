@@ -21,9 +21,9 @@ default = 1
 default = uses your current directory. $PWD
 
 --s
-default = None. Run name and named logfile.
+default = None. Run name and corresponding logfile ID.
 
---THRESHOLD. This is the minimum length required for processing
+--THRESHOLD. This is the minimum length required for final processing. Sequence still not making this value are removed from analysis and are moved to a leftovers.fasta file
 default = 300
 
 --MARKER_BLAST_ID
@@ -32,10 +32,10 @@ default = ITS_Marker
 --EXTRACTED_MARKER_OUT
 default = extracted_sequences_ITS
 
---Input_seq. This is the fasta file containing your reference sequences at your specifiied taxonomic level and gene.
+--Input_seq. This is the fasta file containing your reference sequences at your specific taxonomic level and gene.
 default = ITS.fa
 
---CutValue. This value is the minimum length you are willing to compare of the gene you specified after extraction.
+--CutValue. This value is the minimum length you are willing to compare the gene you specified after extraction. Sequences above this Cutvalue will not be reconstructed. Therefore, knowing your expected sequence size (65% is good starting point) is important as the greater the length of the sequence the more resolution. 
 default = 500
 
 # Analysis functions
