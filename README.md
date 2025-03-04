@@ -35,10 +35,14 @@ This is the fasta file containing your reference sequences at your specific taxo
 This value is the minimum length you are willing to compare the gene you specified after extraction. Sequences above this Cutvalue will not be reconstructed. Therefore, knowing your expected sequence size (65% is good starting point) is important as the greater the length of the sequence the more resolution. 
 
 # Analysis functions
-(Utilizes: [blast](https://anaconda.org/bioconda/blast) and [bedtools](https://anaconda.org/bioconda/bedtools)) 
-(Utilizes: Custom script) 
-(Utilizes: [cap3](https://anaconda.org/bioconda/cap3) and [bedtools](https://anaconda.org/bioconda/bedtools)) 
-(Utilizes: [mafft](https://anaconda.org/bioconda/mafft), [trimal](https://anaconda.org/bioconda/trimal), and [iqtree](https://anaconda.org/bioconda/iqtree)) 
+Utilizes: 
+- [blast](https://anaconda.org/bioconda/blast) 
+- [bedtools](https://anaconda.org/bioconda/bedtools)
+- [cap3](https://anaconda.org/bioconda/cap3)
+- [bedtools](https://anaconda.org/bioconda/bedtools)
+- [mafft](https://anaconda.org/bioconda/mafft)
+- [trimal](https://anaconda.org/bioconda/trimal)
+- [iqtree](https://anaconda.org/bioconda/iqtree)
 
 --build
 Creates blastdb for each genome and does blast search against your provided reference markers, thereafter, extracting the relevant hit sequences.
