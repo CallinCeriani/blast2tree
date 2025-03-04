@@ -48,7 +48,7 @@ function build()
         [ -f "$FILE" ] || continue
         BASE_NAME="${FILE##*/}"
         BASE_NAME="${BASE_NAME%.*}"
-        run_analysis "$blast" "make blast db" "makeblastdb -in $FILE -dbtype nucl -out $GENOME_DIR/${BASE_NAME}_db"
+        run_analysis "$blast2tree" "make blast db" "makeblastdb -in $FILE -dbtype nucl -out $GENOME_DIR/${BASE_NAME}_db"
         echo "BLAST database created: $BASE_NAME"
     done
 
@@ -70,7 +70,7 @@ function build()
             continue
         fi
 
-        run_analysis "$blast" "blastn" "eval blastn -query $QUERY_FILE -db $GENOME_DIR/${BASE_NAME}_db -outfmt \"$Variable_test2\" -evalue 1e-10 -gapopen 5 -gapextend 2 -perc_identity 89 -qcov_hsp_perc 20 -max_target_seqs 5 -word_size 7 -num_threads $Cpus -out $OUTPUT_FILE"
+        run_analysis "$blast2tree" "blastn" "eval blastn -query $QUERY_FILE -db $GENOME_DIR/${BASE_NAME}_db -outfmt \"$Variable_test2\" -evalue 1e-10 -gapopen 5 -gapextend 2 -perc_identity 89 -qcov_hsp_perc 20 -max_target_seqs 5 -word_size 7 -num_threads $Cpus -out $OUTPUT_FILE"
         echo "BLAST search completed: $BASE_NAME"
     done
 
@@ -99,6 +99,8 @@ function build()
         
         [[ -f "$GENOME_FILE" ]] || { echo "Warning: No genome file found for $BASE_NAME, skipping..."; continue; }
         [[ -s "$BED_FILE" ]] || { echo "Warning: Empty BED file: $BED_FILE, skipping..."; continue; }
+
+        conda activate $blast2tree
         
         echo "Extracting sequences from: $GENOME_FILE using $BED_FILE"
         while IFS=$'\t' read -r CHR START END MARKER _; do
@@ -112,6 +114,7 @@ function build()
         done < "$BED_FILE"
         echo "Sequences extracted to: $EXTRACTED_SEQ_DIR/${BASE_NAME}_extracted.fasta"
     done
-
+    
+    conda deactivate $blast2tree
     echo "Process complete!"
 }
