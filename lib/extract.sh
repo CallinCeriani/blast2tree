@@ -1,12 +1,4 @@
 #!/bin/bash
-# Combined script to process fasta files and extract marker sequences.
-# Usage: ./script.sh <input_directory> <output_directory>
-
-# Check if the correct number of arguments are provided
-#if [ "$#" -ne 2 ]; then
-#  echo "Usage: $0 <input_directory> <output_directory>"
-#  exit 1
-#fi
 
 function extract() {
     echo "Now running extraction script!"
