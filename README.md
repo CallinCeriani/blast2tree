@@ -4,7 +4,7 @@ A linux pipeline to quickly get genus identification for many genomes of unknown
 - a single fasta file containing the best representation from the reference markers
 - 
 
-Utilizes: 
+####Utilizes: 
 - [blast](https://anaconda.org/bioconda/blast) 
 - [bedtools](https://anaconda.org/bioconda/bedtools)
 - [cap3](https://anaconda.org/bioconda/cap3)
