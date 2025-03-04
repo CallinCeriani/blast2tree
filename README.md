@@ -25,8 +25,10 @@ A linux pipeline to quickly get genus identification for many genomes of unknown
 > This is the minimum length required for final processing. Sequence still not making this value are removed from analysis and are moved to a leftovers.fasta file
 
 --MARKER_BLAST_ID
+>
 
 --EXTRACTED_MARKER_OUT
+>
 
 --Input_seq
 > This is the fasta file containing your reference sequences at your specific taxonomic level and gene.
@@ -48,21 +50,21 @@ Utilizes:
 > Creates blastdb for each genome and does blast search against your provided reference markers, thereafter, extracting the relevant hit sequences.
 
 --extract
-This determines the longest hit in .bed file and extracts it.
+> This determines the longest hit in .bed file and extracts it.
 
 --reconstruct
-Reconstructs marker over separate contigs and adds to marker file in prep for --tree. Requires reference.fa in $Working_Directory.
+> Reconstructs marker over separate contigs and adds to marker file in prep for --tree. Requires reference.fa in $Working_Directory.
 
 --tree
-This does alignment, trimming, and constructs the tree.
+> This does alignment, trimming, and constructs the tree.
 
 ## Utility functions
 
 --variables|--l
-Display BUSCO, Augustus and NCBI taxonomic ID options or databases.
+> Display BUSCO, Augustus and NCBI taxonomic ID options or databases.
 
 --rename_contigs|--K
-Renames all .fasta contigs in a directory based on filename(s). Output is in the directory renamed_contigs. Built into --busco_batch.
+> Renames all .fasta contigs in a directory based on filename(s). Output is in the directory renamed_contigs. Built into --busco_batch.
 
 --make_files|--mk
-Makes a folder for all .fasta's in a directory and moves them into their corresponding folder.
+> Makes a folder for all .fasta's in a directory and moves them into their corresponding folder.
