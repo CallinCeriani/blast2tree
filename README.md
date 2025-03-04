@@ -47,10 +47,10 @@ default = 500
 (Utilizes: Custom script) This determines the longest hit in .bed file and extracts it.
 
 --reconstruct
-(Utilizes: $cap3, $bedtools) Reconstructs marker over separate contigs and adds to marker file in prep for --tree. Requires reference.fa in $Working_Directory.
+(Utilizes: [cap3](https://anaconda.org/bioconda/cap3), [bedtools](https://anaconda.org/bioconda/bedtools)) Reconstructs marker over separate contigs and adds to marker file in prep for --tree. Requires reference.fa in $Working_Directory.
 
 --tree
-(Utilizes: $muscle, $trimal, $iqtree) This does alignment, trimming, and constructs the tree.
+(Utilizes: [muscle](https://anaconda.org/bioconda/mafft), [trimal](https://anaconda.org/bioconda/trimal), [iqtree](https://anaconda.org/bioconda/iqtree)) This does alignment, trimming, and constructs the tree.
 
 # Utility functions
 
