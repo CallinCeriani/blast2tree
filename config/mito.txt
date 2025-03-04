@@ -1,0 +1,38 @@
+Project:
+-----------------------
+Project name          = CMW10069
+Type                  = mito
+Genome Range          = 60000-70000
+K-mer                 = 31
+Max memory            = 100
+Extended log          = 1
+Save assembled reads  = no
+Seed Input            = //home/ldapusers/callin.ceriani/Reference_genomes/Mitochondria_references/Core_mito_reference.fasta
+Extend seed directly  = no
+Reference sequence    = //home/ldapusers/callin.ceriani/Reference_genomes/Mitochondria_references/Chrysoporthe_austroafricana_mitochondrion.fasta
+Variance detection    = no
+Chloroplast sequence  =
+
+Dataset 1:
+-----------------------
+Read Length           = 151
+Insert size           = 300
+Platform              = illumina
+Single/Paired         = PE
+Combined reads        = 
+Forward reads         = /home/ldapusers/callin.ceriani/Documents/reads/In/CMW10069_sa162694_xxx_Cryphonectria/Mitochondria/trimmed.CMW10069_sa162694_xxx_Cryphonectria_R1.fastq.gz
+Reverse reads         = /home/ldapusers/callin.ceriani/Documents/reads/In/CMW10069_sa162694_xxx_Cryphonectria/Mitochondria/trimmed.CMW10069_sa162694_xxx_Cryphonectria_R3.fastq.gz
+Store Hash            =
+
+Heteroplasmy:
+-----------------------
+MAF                   = 
+HP exclude list       = 
+PCR-free              = 
+
+Optional:
+-----------------------
+Insert size auto      = yes
+Use Quality Scores    = no
+Reduce ambigious N's  = yes
+Output path           = /home/ldapusers/callin.ceriani/Documents/reads/In/CMW10069_sa162694_xxx_Cryphonectria/Mitochondria/
