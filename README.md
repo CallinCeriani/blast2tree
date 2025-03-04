@@ -4,13 +4,13 @@ A linux pipeline to quickly get genus identification for many genomes of unknown
 - a single fasta file containing the best representation from the reference markers
 - 
 
-# How to install
+## How to install
 - [Download](https://github.com/CallinCeriani/Blast2Tree/archive/refs/tags/Versions.tar.gz)
 - Install with conda env create -f Blast2Tree_environment.yml
 - set Blast2Tree.sh to path
 - Referenca.fa amd Marker.fa
 
-# Processing parameters
+## Processing parameters
 
 --threads|-t|--Cpus 
 Default = 2
@@ -34,7 +34,7 @@ This is the fasta file containing your reference sequences at your specific taxo
 --CutValue 
 This value is the minimum length you are willing to compare the gene you specified after extraction. Sequences above this Cutvalue will not be reconstructed. Therefore, knowing your expected sequence size (65% is good starting point) is important as the greater the length of the sequence the more resolution. 
 
-# Analysis functions
+## Analysis functions
 Utilizes: 
 - [blast](https://anaconda.org/bioconda/blast) 
 - [bedtools](https://anaconda.org/bioconda/bedtools)
@@ -56,7 +56,7 @@ Reconstructs marker over separate contigs and adds to marker file in prep for --
 --tree
 This does alignment, trimming, and constructs the tree.
 
-# Utility functions
+## Utility functions
 
 --variables|--l
 Display BUSCO, Augustus and NCBI taxonomic ID options or databases.
