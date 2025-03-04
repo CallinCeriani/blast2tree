@@ -12,22 +12,31 @@ A pipeline to quickly get species identification for genomes.
 - set Blast2Tree.sh to path
 - Referenca.fa amd Marker.fa
 
-# Unnamed title
------------------------------ Processing parameters -----------------------------
+# Processing parameters
 
- --threads|-t|--Cpus                  default = 1
- --working_directory|--wd             default = uses your current directory. /home/ldapusers/callin.ceriani/Documents/Fasta_new
- --Run_name|--s                       default = None. Run name and named logfile.
- --species_name|--sp                  default = None. Do use underscores for space, e.g. Genus_species or Aspergillus_fumigatus
- --busco_taxon|-busco|--busco         default = sordariomycetes_odb10. Do sentral --l to get the options
- --augustus_species|--augustus        default = fusarium_graminearum. Do sentral --l to get the options
- --reference_fasta|--ref_fa           default = Fusarium circinatum. Set /path/to/your/reference.fasta. Check the reference genomes in your home dir.
- --reference_gff3|--ref_gf3           default = Fusarium circinatum. Set /path/to/your/reference.gff3
- --THRESHOLD                          default = 300
- --MARKER_BLAST_ID                    default = ITS_Marker
- --EXTRACTED_MARKER_OUT               default = extracted_sequences_ITS
- --Input_seq                          default = ITS.fa
- --CutValue                           default = 500
+--threads|-t|--Cpus
+default = 1
+
+--working_directory|--wd
+default = uses your current directory. $PWD
+
+--Run_name|--s
+default = None. Run name and named logfile.
+
+--THRESHOLD
+default = 300
+
+--MARKER_BLAST_ID
+default = ITS_Marker
+
+--EXTRACTED_MARKER_OUT
+default = extracted_sequences_ITS
+
+--Input_seq
+default = ITS.fa
+
+--CutValue
+default = 500
 
 ------------------------------- Analysis functions ------------------------------
 
