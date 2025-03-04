@@ -41,7 +41,7 @@ default = 500
 # Analysis functions
 
 --build
-(Utilizes: $blast, $bedtools) Create blastdb for genome and blast search our reference markers, while extracting sequences.
+Utilizes: [blast](https://anaconda.org/bioconda/blast) and [bedtools](https://anaconda.org/bioconda/bedtools). Creates blastdb for each genome and does blast search against your provided reference markers, thereafter, extracting the relevant hit sequences.
 
 --extract
 (Utilizes: Custom script) This determines the longest hit in .bed file and extracts it.
