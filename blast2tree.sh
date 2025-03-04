@@ -22,14 +22,14 @@ Help() {
   echo
   echo -e "${BLUE}----------------------------- Processing parameters -----------------------------${RESET}"
   echo
-  echo -e " --threads|-t|--Cpus                  default = 1" 
+  echo -e " --threads|-t|--Cpus                  default = 2" 
   echo -e " --working_directory|--wd             default = uses your current directory. $PWD"
   echo -e " --Run_name|--s                       default = None. Run name and named logfile."
-  echo -e " --THRESHOLD                          default = 300"
-  echo -e " --MARKER_BLAST_ID                    default = ITS_Marker"
-  echo -e " --EXTRACTED_MARKER_OUT               default = extracted_sequences_ITS"
-  echo -e " --Input_seq                          default = ITS.fa" 
-  echo -e " --CutValue                           default = 500" 
+  echo -e " --THRESHOLD                          default = "
+  echo -e " --MARKER_BLAST_ID                    default = "
+  echo -e " --EXTRACTED_MARKER_OUT               default = "
+  echo -e " --Input_seq                          default = " 
+  echo -e " --CutValue                           default = " 
   echo
   echo -e "${BLUE}------------------------------- Analysis functions ------------------------------${RESET}"
   echo
@@ -135,14 +135,14 @@ source_files_in_dir "/opt/bin/lib" "sh" "No scripts found in /opt/bin/lib"
 source_files_in_dir "/opt/bin/misc" "sh" "No scripts found in /opt/bin/misc"
 
 # Default values for new options
-  Cpus=1
+  Cpus=2
   Working_Directory="$PWD"
-  THRESHOLD=300                                      # Set the threshold for sequence length
-  MARKER_NAME=ITS
-  MARKER_BLAST_ID=ITS_Marker                         # User set last dir
-  EXTRACTED_MARKER_OUT=extracted_sequences_ITS       # User set last part
-  Input_seq=ITS.fa                                   # User set last part
-  CutValue="450"
+  THRESHOLD=
+  MARKER_NAME=
+  MARKER_BLAST_ID= 
+  EXTRACTED_MARKER_OUT=               
+  Input_seq=                              
+  CutValue=""
    
 ############################################################
 # Function to log the time and output of a command         #
