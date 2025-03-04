@@ -13,26 +13,26 @@ A linux pipeline to quickly get genus identification for many genomes of unknown
 ## Processing parameters
 
 --threads|-t|--Cpus 
-Default = 2
+> Default = 2
 
 --working_directory|--wd 
-Uses your current directory. $PWD
+> Uses your current directory. $PWD
 
 --s
-Run name and corresponding logfile ID.
+>Run name and corresponding logfile ID.
 
 --THRESHOLD
-This is the minimum length required for final processing. Sequence still not making this value are removed from analysis and are moved to a leftovers.fasta file
+> This is the minimum length required for final processing. Sequence still not making this value are removed from analysis and are moved to a leftovers.fasta file
 
 --MARKER_BLAST_ID
 
 --EXTRACTED_MARKER_OUT
 
 --Input_seq
-This is the fasta file containing your reference sequences at your specific taxonomic level and gene.
+> This is the fasta file containing your reference sequences at your specific taxonomic level and gene.
 
 --CutValue 
-This value is the minimum length you are willing to compare the gene you specified after extraction. Sequences above this Cutvalue will not be reconstructed. Therefore, knowing your expected sequence size (65% is good starting point) is important as the greater the length of the sequence the more resolution. 
+> This value is the minimum length you are willing to compare the gene you specified after extraction. Sequences above this Cutvalue will not be reconstructed. Therefore, knowing your expected sequence size (65% is good starting point) is important as the greater the length of the sequence the more resolution. 
 
 ## Analysis functions
 Utilizes: 
@@ -45,7 +45,7 @@ Utilizes:
 - [iqtree](https://anaconda.org/bioconda/iqtree)
 
 --build
-Creates blastdb for each genome and does blast search against your provided reference markers, thereafter, extracting the relevant hit sequences.
+> Creates blastdb for each genome and does blast search against your provided reference markers, thereafter, extracting the relevant hit sequences.
 
 --extract
 This determines the longest hit in .bed file and extracts it.
