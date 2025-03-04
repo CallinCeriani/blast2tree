@@ -14,7 +14,7 @@ A pipeline to quickly get species identification for genomes.
 
 # Processing parameters
 
---threads|-t|--Cpus       
+--threads|-t|--Cpus 
 default = 1
 
 --working_directory|--wd 
