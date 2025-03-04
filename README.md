@@ -5,7 +5,7 @@ A pipeline to quickly get genus identification for many genomes of unknown class
 - 
 
 # How to install
-- Download
+- [Download](https://github.com/CallinCeriani/Blast2Tree/archive/refs/tags/Versions.tar.gz)
 - Install Conda env
 - set Blast2Tree.sh to path
 - Referenca.fa amd Marker.fa
