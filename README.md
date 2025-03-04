@@ -1,8 +1,8 @@
 # Blast2Tree
-A pipeline to quickly get genus identification for genomes.
--
--
--
+A pipeline to quickly get genus identification for many genomes of unknown classification.
+- Requires a fasta file with reference markers for each of the species at your chosen classification level
+- a single fasta file containing the best representation from the reference markers
+- 
 
 # How to install
 - Download
