@@ -46,7 +46,7 @@ This value is the minimum length you are willing to compare the gene you specifi
 (Utilizes: [cap3](https://anaconda.org/bioconda/cap3) and [bedtools](https://anaconda.org/bioconda/bedtools)) Reconstructs marker over separate contigs and adds to marker file in prep for --tree. Requires reference.fa in $Working_Directory.
 
 --tree
-(Utilizes: [muscle](https://anaconda.org/bioconda/mafft), [trimal](https://anaconda.org/bioconda/trimal), and [iqtree](https://anaconda.org/bioconda/iqtree)) This does alignment, trimming, and constructs the tree.
+(Utilizes: https://anaconda.org/bioconda/mafft, [trimal](https://anaconda.org/bioconda/trimal), and [iqtree](https://anaconda.org/bioconda/iqtree)) This does alignment, trimming, and constructs the tree.
 
 # Utility functions
 
