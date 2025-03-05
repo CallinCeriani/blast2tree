@@ -101,20 +101,6 @@ source_files_in_dir() {
   fi
 }
 
-# Function to handle variable conflicts
-handle_conflicts() {
-  local file="$1"
-  local var_conflict=""
-  while read -r line; do
-    if [[ "$line" =~ ^[a-zA-Z_][a-zA-Z0-9_]*= ]]; then
-      local var_name="${line%%=*}"
-      if [[ -n "${!var_name+x}" ]]; then
-        echo -e "${YELLOW}Warning: Variable $var_name already set. New value from $file might override existing value.${RESET}"
-      fi
-    fi
-  done < "$file"
-}
-
 # Function to re-source configuration files after updating variables
 refresh_configurations() {
   #echo -e "${GREEN}Refreshing configurations with updated values...${RESET}"
