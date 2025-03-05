@@ -17,7 +17,8 @@ A linux pipeline to quickly get genus identification for many genomes of unknown
 - [Download](https://github.com/CallinCeriani/Blast2Tree/archive/refs/tags/Versions.tar.gz)
 - Install with `conda env create -f Blast2Tree_environment.yml`
 - set Blast2Tree.sh to path
-- Referenca.fa amd Marker.fa
+- Add your genome files (either .fasta or .fna) to your folder containing the reference (.fa) and your markers (.fa)
+- To get the help menue do `blast2tree.sh -h`
 
 ## Processing parameters
 
