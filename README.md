@@ -50,21 +50,21 @@ Requires:
 
 ## Analysis functions
 
---build
+--build|--A
 > Creates blastdb for each genome and does a blast search against your provided reference markers, thereafter, extracting the relevant hit sequences.
 
---extract
+--extract|--B
 > This determines the longest hit in from your blast search and extracts it and any other shorter sequences related to the relative marker that produced the longest hit.
 
---reconstruct
+--reconstruct|--C
 > If sequences are bellow the --THRESHOLD value, this script attempts to reconstructs these markers over the separate contigs to imrpove their length. In addition, to filtering the relevant hits in preparation for --tree.
 
---tree
+--tree|--D
 > This does alignment, trimming, and constructs the tree.
 
 ## Utility functions
---rename_contigs|--K
+Rename contigs|--K
 > Renames all .fasta contigs in a directory based on filename(s). Output is in the directory renamed_contigs. Built into --busco_batch.
 
---make_files|--mk
+Make files|--mk
 > Makes a folder for all .fasta's in a directory and moves them into their corresponding folder.
