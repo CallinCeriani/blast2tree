@@ -1,5 +1,5 @@
 # Blast2Tree
-A experimental Linux pipeline to quickly get genus-level identification for many genomes of uncertain classification at your chosen classification level. In addition, sequences of interest are generated for manual perusal. 
+A experimental Linux pipeline designed around fungi to quickly get genus-level identification for many genomes of uncertain classification at your chosen classification level. In addition, sequences of interest are generated for manual perusal. 
 
 ### Requires:
 - A fasta file with your reference markers for each of the known species across your chosen classification level
