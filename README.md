@@ -82,7 +82,7 @@ reconstruct|--C
 
 tree|--D
 > This does alignment, trimming, and constructs the tree.
-> `iqtree2 -m MFP -bb 1000 -alrt 1000` `trimal -automated1` `mafft --adjustdirectionaccurately --auto`
+>`mafft --adjustdirectionaccurately --auto` `trimal -automated1` `iqtree2 -m MFP -bb 1000 -alrt 1000` 
 
 ## Utility functions
 Rename contigs|--K
