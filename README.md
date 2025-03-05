@@ -33,7 +33,9 @@ A linux pipeline to quickly get genus identification for many genomes of unknown
 
 --THRESHOLD
 > This is the minimum length required for final processing. Sequence still not making this value are removed from analysis and are moved to a leftovers.fasta file
+
 --MARKER_BLAST_ID
+>
 
 --EXTRACTED_MARKER_OUT
 >
