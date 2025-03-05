@@ -43,7 +43,7 @@ Requires:
 > Name of the folder for the extracted sequences related to your marker e.g. Extracted_ITS or Extracted_BT
 
 --Input_seq
-> This fasta file contains the reference sequences at your specific taxonomic level.
+> This fasta file contains the reference sequences at your specific taxonomic level. e.g. ITS.fa
 
 --CutValue 
 > This value is the minimum length you are willing to compare the gene you specified after extraction. Sequences above this Cutvalue will not be reconstructed. Therefore, knowing your expected sequence size (65% is good starting point) is important as the greater the length of the sequence the more resolution you will be able to achieve. 
