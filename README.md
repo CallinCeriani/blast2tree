@@ -30,7 +30,7 @@ Threads|-t
 Working directory|--wd 
 > Uses your current directory as the expected working directory.
 
---s
+Run name|--s
 >Run name and corresponding logfile output identifier.
 
 --THRESHOLD
