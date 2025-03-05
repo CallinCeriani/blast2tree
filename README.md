@@ -71,15 +71,18 @@ Run name|--s
 
 build|--A
 > Creates blastdb for each genome and does a blast search against your provided reference markers, thereafter, extracting the relevant hit sequences.
+> `-evalue 1e-10 -gapopen 5 -gapextend 2 -perc_identity 89 -qcov_hsp_perc 20 -max_target_seqs 5 -word_size 7`
 
 extract|--B
 > This determines the longest hit in from your blast search and extracts it and any other shorter sequences related to the relative marker that produced the longest hit.
 
 reconstruct|--C
 > If sequences are bellow the --THRESHOLD value, this script attempts to reconstructs these markers over the separate contigs to imrpove their length. In addition, to filtering the relevant hits in preparation for --tree.
+> `cap3 -m 60 -p 75 -g 1`
 
 tree|--D
-> This does alignment, trimming, and constructs the tree. `iqtree2 -m MFP -bb 1000 -alrt 1000` `trimal -automated1` `mafft --adjustdirectionaccurately --auto`
+> This does alignment, trimming, and constructs the tree.
+> `iqtree2 -m MFP -bb 1000 -alrt 1000` `trimal -automated1` `mafft --adjustdirectionaccurately --auto`
 
 ## Utility functions
 Rename contigs|--K
