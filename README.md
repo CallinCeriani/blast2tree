@@ -19,12 +19,12 @@ A experimental Linux pipeline designed around fungi to quickly get genus-level i
 - [iqtree](https://anaconda.org/bioconda/iqtree)
 
 ## How to install
-- 1) [Download](https://github.com/CallinCeriani/Blast2Tree/archive/refs/tags/Versions.tar.gz)
-- 2) Install the conda environment with
+1) [Download](https://github.com/CallinCeriani/Blast2Tree/archive/refs/tags/Versions.tar.gz)
+2) Install the conda environment with
 ```
-conda env create -f Blast2Tree_environment.yml
+conda env create -f /path/to/download/Blast2Tree_environment.yml
 ```
-- 3) Set the script blast2tree.sh to path with
+3) Set the script blast2tree.sh to path with
 ```
 echo 'export PATH="$PATH:/path/to/script/dir"' >> ~/.bashrc && source ~/.bashrc
 ```
@@ -32,6 +32,7 @@ followed by
 ```
 chmod +x /path/to/blast2tree.sh`
 ```
+
 **To run:**
 - Add your genome files (either .fasta or .fna) to your folder containing the reference (.fa) and your markers (.fa)
 - To get the help menu do
