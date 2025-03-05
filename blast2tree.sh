@@ -24,31 +24,27 @@ Help() {
   echo
   echo -e "${BLUE}----------------------------- Processing parameters -----------------------------${RESET}"
   echo
-  echo -e " --threads|-t|--Cpus           default = 2" 
-  echo -e " --wd                          default = uses your current directory. $PWD"
-  echo -e " --Run_name|--s                default = None. Run name and named logfile."
-  echo -e " --THRESHOLD                   default = None. e.g. 300"
-  echo -e " --MARKER_BLAST_ID             default = None. e.g. ITS"
-  echo -e " --EXTRACTED_MARKER_OUT        default = None. e.g. Extracted_ITS"
-  echo -e " --Input_seq                   default = None. e.g. ITS.fa" 
-  echo -e " --CutValue                    default = None. e.g. 450" 
+  echo -e " Threads|-t                         default = 1" 
+  echo -e " Working directory|--wd             default = uses your current directory. $PWD"
+  echo -e " Run name|--s                       default = None. Run name and named logfile."
+  echo -e " --THRESHOLD                        default = 300"
+  echo -e " --MARKER_BLAST_ID                  default = ITS_Marker"
+  echo -e " --EXTRACTED_MARKER_OUT             default = extracted_sequences_ITS"
+  echo -e " --Input_seq                        default = ITS.fa" 
+  echo -e " --CutValue                         default = 500" 
   echo
   echo -e "${BLUE}------------------------------- Analysis functions ------------------------------${RESET}"
   echo
-  echo -e " --build                     (Utilizes: ${GREEN}$blast, $bedtools.${RESET} Create blastdb for genome and  blast search our reference markers, whiling extracting sequences."
-  echo -e " --extract                   (Utilizes: ${GREEN}Custom script.${RESET} This determines the longest hit in .bed file and extracts it." 
-  echo -e " --reconstruct               (Utilizes: ${GREEN}$cap3, $bedtools.${RESET} Reconstructs marker over separate contigs and adds to marker file in prep for --tree. Requires reference.fa in $Working_Directory."
-  echo -e " --tree                      (Utilizes: ${GREEN}$muscle, $trimal, $iqtree.${RESET} This does alignment, trimming and constructs the tree." 
+  echo -e " Build|--A                 (Utilizes: ${GREEN}$blast, $bedtools.${RESET} Requires --K. Creates blast_db for genomes, blasting and extracting the relevant hit."
+  echo -e " Extract|--B               (Utilizes: ${GREEN}Custom script.${RESET} Requires --build. This determines the longest hit in .bed file and extracts it." 
+  echo -e " Reconstruct|--C           (Utilizes: ${GREEN}$cap3, $bedtools.${RESET} Requires --extract. Reconstructs marker over separate contigs. Requires reference.fa and marker.fa."
+  echo -e " Tree|--D                  (Utilizes: ${GREEN}$muscle, $trimal, $iqtree.${RESET} Requires --reconstruct. This does alignment, trimming and constructs the tree." 
   echo 
   echo -e "${BLUE}------------------------------- Utility functions -------------------------------${RESET}"
   echo
-  echo -e " Variables|--l               Display BUSCO, Augustus and NCBI taxonomic ID options or databases"
-  echo -e " rename contigs|--K          Renames all .fasta contigs in a directory based on filename(s). output is in the directory renamed_contigs. Built into --busco_batch"
-  echo -e " Make files|--M              Makes a folder for all .fasta's in a directory and moves them into their corresponding folder"
-  echo
-  echo -e "${BLUE}--------------------------------- Example usage ---------------------------------${RESET}"
-  echo
-  echo -e "                   Example: phylo1.sh -t <options> --s <options> --A1"
+  echo -e " Variables|--l                      Display BUSCO, Augustus and NCBI taxonomic ID options or databases"
+  echo -e " Rename contigs|--K                 Renames all .fasta contigs in a directory based on filename(s). output is in the directory renamed_contigs."
+  echo -e " Make files|--mk                    Makes a folder for all .fasta's in a directory and moves them into their corresponding folder"
   echo
   echo -e "${CYAN}=================================== END OF HELP MENU ===================================${RESET}"
   echo
@@ -62,7 +58,7 @@ echo -e "  Working Directory: $Working_Directory"
 echo -e "  Sample Name:       $Input_name"
 echo -e "  Number of CPUs:    $Cpus"
 echo
-echo -e "                                   To get help do phylo1.sh --h"
+echo -e "                                   To get help do blast2tree.sh --h"
 echo -e "${CYAN}==================================================================================${RESET}"
 }
 
@@ -161,7 +157,7 @@ log_and_time() {
 #############################################################
 while [[ $# -gt 0 ]]; do
   case "$1" in
-    --threads|-t|--Cpus)  # Set number of threads
+    -t)  # Set number of threads
        if [[ -z "$2" ]]; then
          echo "Error: --threads requires a value"
          exit 1
@@ -179,7 +175,7 @@ while [[ $# -gt 0 ]]; do
        refresh_configurations
        shift 2
        ;;
-    --sample_name|--s)  # Set sample name
+    --s)  # Set sample name
        if [[ -z "$2" ]]; then
          echo "Error: --sample_name requires a value"
          exit 1
@@ -242,31 +238,31 @@ while [[ $# -gt 0 ]]; do
        refresh_configurations
        shift 2
        ;;
-    --build|--A)  # Run build script
+    --A)  # Run build script
        log_and_time "build" "$Log_DIR/$Logfile"
        shift
        ;;
-    --extract|--B)  # Run extract script
+    --B)  # Run extract script
        log_and_time "extract" "$Log_DIR/$Logfile"
        shift
        ;;
-    --reconstruct|--C)  # Run reconstruct script
+    --C)  # Run reconstruct script
        log_and_time "reconstruct" "$Log_DIR/$Logfile"
        shift
        ;;
-    --tree|--D)  # Run tree script
+    --D)  # Run tree script
        log_and_time "tree" "$Log_DIR/$Logfile"
        shift
        ;;
-    --variables|--l)  # Display variables
+    --l)  # Display variables
        Variables
        shift
        ;;
-    --rename_contigs|--K)  # Rename contigs
+    --K)  # Rename contigs
        rename_contigs
        shift
        ;;
-    --make_files|--M)  # Make files for all .fasta
+    --M)  # Make files for all .fasta
        make_files
        shift
        ;;
