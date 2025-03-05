@@ -1,4 +1,7 @@
 # Blast2Tree
+
+[![install with bioconda](https://img.shields.io/badge/install%20with-bioconda-brightgreen.svg?style=flat)](http://bioconda.github.io/recipes/busco_phylogenomics/README.html)
+
 A experimental Linux pipeline designed around fungi to quickly get genus-level identification for many genomes of uncertain classification at your chosen classification level. In addition, sequences of interest are generated for manual perusal. 
 
 ### Requires:
@@ -17,10 +20,15 @@ A experimental Linux pipeline designed around fungi to quickly get genus-level i
 
 ## How to install
 - [Download](https://github.com/CallinCeriani/Blast2Tree/archive/refs/tags/Versions.tar.gz)
-- Install the conda environment with `conda env create -f Blast2Tree_environment.yml`
-- Set the script blast2tree.sh to path with `echo 'export PATH="$PATH:/path/to/script/dir"' >> ~/.bashrc && source ~/.bashrc` followed by `chmod +x /path/to/blast2tree.sh`
+- Install the conda environment with
+```conda env create -f Blast2Tree_environment.yml```
+- Set the script blast2tree.sh to path with
+```echo 'export PATH="$PATH:/path/to/script/dir"' >> ~/.bashrc && source ~/.bashrc```
+followed by
+```chmod +x /path/to/blast2tree.sh```
 - Add your genome files (either .fasta or .fna) to your folder containing the reference (.fa) and your markers (.fa)
-- To get the help menu do `blast2tree.sh -h`
+- To get the help menu do
+```blast2tree.sh -h```
 
 ## Processing parameters
 
