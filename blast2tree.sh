@@ -42,7 +42,6 @@ Help() {
   echo 
   echo -e "${BLUE}------------------------------- Utility functions -------------------------------${RESET}"
   echo
-  echo -e " Variables|--l                      Display BUSCO, Augustus and NCBI taxonomic ID options or databases"
   echo -e " Rename contigs|--K                 Renames all .fasta contigs in a directory based on filename(s). output is in the directory renamed_contigs."
   echo -e " Make files|--mk                    Makes a folder for all .fasta's in a directory and moves them into their corresponding folder"
   echo
@@ -52,7 +51,7 @@ Help() {
 
 Wrong() {
 echo
-echo -e "${CYAN}This is C. Ceriani's experimental pipeline (2024)${RESET}"
+echo -e "${CYAN}This is a experimental pipeline${RESET}"
 echo -e "${CYAN}============================ CONFIGURATION INFORMATION ============================${RESET}"
 echo -e "  Working Directory: $Working_Directory"
 echo -e "  Sample Name:       $Input_name"
