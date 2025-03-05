@@ -64,7 +64,7 @@ tree|--D
 
 ## Utility functions
 Rename contigs|--K
-> Renames all .fasta contigs in a directory based on filename(s). Output is in the directory renamed_contigs. Built into --busco_batch.
+> Renames all the .fasta file's contigs in a directory, based on the filename(s). Output is in the directory renamed_contigs.
 
 Make files|--M
-> Makes a folder for all .fasta's in a directory and moves them into their corresponding folder.
+> Makes a folder for all .fasta's in a directory based on their names and moves them into their corresponding folder.
