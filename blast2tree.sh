@@ -27,11 +27,11 @@ Help() {
   echo -e " --threads|-t|--Cpus           default = 2" 
   echo -e " --wd                          default = uses your current directory. $PWD"
   echo -e " --Run_name|--s                default = None. Run name and named logfile."
-  echo -e " --THRESHOLD                   default = "
-  echo -e " --MARKER_BLAST_ID             default = "
-  echo -e " --EXTRACTED_MARKER_OUT        default = "
-  echo -e " --Input_seq                   default = " 
-  echo -e " --CutValue                    default = " 
+  echo -e " --THRESHOLD                   default = None. e.g. 300"
+  echo -e " --MARKER_BLAST_ID             default = None. e.g. ITS"
+  echo -e " --EXTRACTED_MARKER_OUT        default = None. e.g. Extracted_ITS"
+  echo -e " --Input_seq                   default = None. e.g. ITS.fa" 
+  echo -e " --CutValue                    default = None. e.g. 450" 
   echo
   echo -e "${BLUE}------------------------------- Analysis functions ------------------------------${RESET}"
   echo
