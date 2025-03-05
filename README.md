@@ -24,7 +24,7 @@ Requires:
 
 ## Processing parameters
 
-Threads|-t|--Cpus 
+Threads|-t
 > Default = 2
 
 Working directory|--wd 
