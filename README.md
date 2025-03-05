@@ -18,7 +18,7 @@ Requires:
 ## How to install
 - [Download](https://github.com/CallinCeriani/Blast2Tree/archive/refs/tags/Versions.tar.gz)
 - Install the conda environments with `conda env create -f Blast2Tree_environment.yml`
-- set the script Blast2Tree.sh to path with `echo 'export PATH="$PATH:/path/to/blast2tree.sh"' >> ~/.bashrc && source ~/.bashrc`
+- set the script Blast2Tree.sh to path with `echo 'export PATH="$PATH:/path/to/dir"' >> ~/.bashrc && source ~/.bashrc` followed by `chmod +x /path/to/Blast2Tree.sh`
 - Add your genome files (either .fasta or .fna) to your folder containing the reference (.fa) and your markers (.fa)
 - To get the help menu do `blast2tree.sh -h`
 
