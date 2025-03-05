@@ -31,7 +31,7 @@ echo 'export PATH="$PATH:/path/to/script/dir"' >> ~/.bashrc && source ~/.bashrc
 ```
 followed by
 ```
-chmod +x /path/to/blast2tree.sh`
+chmod +x /path/to/blast2tree.sh
 ```
 
 **To run:**
