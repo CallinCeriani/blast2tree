@@ -23,7 +23,7 @@ Help() {
   echo -e "${BLUE}----------------------------- Processing parameters -----------------------------${RESET}"
   echo
   echo -e " --threads|-t|--Cpus                  default = 2" 
-  echo -e " --working_directory|--wd             default = uses your current directory. $PWD"
+  echo -e " --wd                                 default = uses your current directory. $PWD"
   echo -e " --Run_name|--s                       default = None. Run name and named logfile."
   echo -e " --THRESHOLD                          default = "
   echo -e " --MARKER_BLAST_ID                    default = "
@@ -168,7 +168,7 @@ while [[ $# -gt 0 ]]; do
        refresh_configurations
        shift 2
        ;;
-    --working_directory|--wd)  # Set directory path
+    --wd)  # Set directory path
        if [[ -z "$2" ]]; then
          echo "Error: --working_directory requires a value"
          exit 1
