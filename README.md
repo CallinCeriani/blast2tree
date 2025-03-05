@@ -4,12 +4,12 @@
 
 A experimental Linux pipeline designed around fungi to quickly get genus-level identification for many genomes of uncertain classification at your chosen classification level. In addition, sequences of interest are generated for manual perusal. 
 
-### Requires:
+**Requires:**
 - A fasta file with your reference markers for each of the known species across your chosen classification level
 - A single fasta file containing the best representation from the reference markers
 - Assembled genomes in the .fasta or .fna format
 
-### Utilizes: 
+**Utilizes:**
 - [blast](https://anaconda.org/bioconda/blast) 
 - [bedtools](https://anaconda.org/bioconda/bedtools)
 - [cap3](https://anaconda.org/bioconda/cap3)
@@ -19,12 +19,12 @@ A experimental Linux pipeline designed around fungi to quickly get genus-level i
 - [iqtree](https://anaconda.org/bioconda/iqtree)
 
 ## How to install
-- [Download](https://github.com/CallinCeriani/Blast2Tree/archive/refs/tags/Versions.tar.gz)
-- Install the conda environment with
+- 1) [Download](https://github.com/CallinCeriani/Blast2Tree/archive/refs/tags/Versions.tar.gz)
+- 2) Install the conda environment with
 ```
 conda env create -f Blast2Tree_environment.yml
 ```
-- Set the script blast2tree.sh to path with
+- 3) Set the script blast2tree.sh to path with
 ```
 echo 'export PATH="$PATH:/path/to/script/dir"' >> ~/.bashrc && source ~/.bashrc
 ```
@@ -32,11 +32,13 @@ followed by
 ```
 chmod +x /path/to/blast2tree.sh`
 ```
+**To run:**
 - Add your genome files (either .fasta or .fna) to your folder containing the reference (.fa) and your markers (.fa)
 - To get the help menu do
 ```
 blast2tree.sh -h
 ```
+
 ## Processing parameters
 
 Threads|-t
