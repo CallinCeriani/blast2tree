@@ -4,7 +4,7 @@ A Linux pipeline to quickly get genus-level identification for many genomes of u
 Requires:
 - a fasta file with your reference markers for each of the known species across your chosen classification level
 - a single fasta file containing the best representation from the reference markers
-- Assembled genomes 
+- Assembled genomes in the .fasta or .fna format
 
 #### Utilizes: 
 - [blast](https://anaconda.org/bioconda/blast) 
