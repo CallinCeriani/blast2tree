@@ -34,7 +34,7 @@ chmod +x /path/to/blast2tree.sh`
 ```
 
 **To run:**
-- Add your genome files (either .fasta or .fna) to your folder containing the reference (.fa) and your markers (.fa)
+- Add your genome files (either .fasta or .fna) to a folder containing a file for the reference (.fa) and the markers (.fa)
 - To get the help menu do
 ```
 blast2tree.sh -h
