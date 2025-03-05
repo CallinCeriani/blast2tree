@@ -54,7 +54,7 @@ Requires:
 > Creates blastdb for each genome and does a blast search against your provided reference markers, thereafter, extracting the relevant hit sequences.
 
 --extract
-> This determines the longest hit in from your blast search and extracts it and any other shorter sequences related to the relative marker hit.
+> This determines the longest hit in from your blast search and extracts it and any other shorter sequences related to the relative marker that produced the longest hit.
 
 --reconstruct
 > If sequences are bellow the --THRESHOLD value, this script attempts to reconstructs these markers over the separate contigs to imrpove their length. In addition, to filtering the relevant hits in preparation for --tree.
