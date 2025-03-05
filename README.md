@@ -1,7 +1,7 @@
 # Blast2Tree
 A Linux pipeline to quickly get genus-level identification for many genomes of uncertain classification at your chosen classification level.
 
-Requires:
+###Requires:
 - A fasta file with your reference markers for each of the known species across your chosen classification level
 - A single fasta file containing the best representation from the reference markers
 - Assembled genomes in the .fasta or .fna format
