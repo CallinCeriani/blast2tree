@@ -1,8 +1,10 @@
 # Blast2Tree
-A linux pipeline to quickly get genus identification for many genomes of unknown classification.
-- Requires a fasta file with reference markers for each of the species at your chosen classification level
+A Linux pipeline to quickly get genus-level identification for many genomes of uncertain classification at your chosen classification level.
+
+Requires:
+- a fasta file with your reference markers for each of the known species across your chosen classification level
 - a single fasta file containing the best representation from the reference markers
-- 
+- Assembled genomes 
 
 #### Utilizes: 
 - [blast](https://anaconda.org/bioconda/blast) 
@@ -15,10 +17,10 @@ A linux pipeline to quickly get genus identification for many genomes of unknown
 
 ## How to install
 - [Download](https://github.com/CallinCeriani/Blast2Tree/archive/refs/tags/Versions.tar.gz)
-- Install with `conda env create -f Blast2Tree_environment.yml`
-- set Blast2Tree.sh to path with `echo 'export PATH="$PATH:/path/to/blast2tree.sh"' >> ~/.bashrc && source ~/.bashrc`
+- Install the conda environments with `conda env create -f Blast2Tree_environment.yml`
+- set the script Blast2Tree.sh to path with `echo 'export PATH="$PATH:/path/to/blast2tree.sh"' >> ~/.bashrc && source ~/.bashrc`
 - Add your genome files (either .fasta or .fna) to your folder containing the reference (.fa) and your markers (.fa)
-- To get the help menue do `blast2tree.sh -h`
+- To get the help menu do `blast2tree.sh -h`
 
 ## Processing parameters
 
@@ -26,36 +28,36 @@ A linux pipeline to quickly get genus identification for many genomes of unknown
 > Default = 2
 
 --working_directory|--wd 
-> Uses your current directory. $PWD
+> Uses your current directory.
 
 --s
->Run name and corresponding logfile ID.
+>Run name and corresponding logfile output identifier.
 
 --THRESHOLD
-> This is the minimum length required for final processing. Sequence still not making this value are removed from analysis and are moved to a leftovers.fasta file
+> This is the minimum length required for final processing to ensure quality through higher-length sequences. Sequences that are less than this value are removed from the final analysis (tree making) and are moved to a leftovers.fasta file
 
 --MARKER_BLAST_ID
->
+> Name of your gene marker e.g. ITS or BT 
 
 --EXTRACTED_MARKER_OUT
->
+> Name of the folder for the extracted sequences related to your marker e.g. Extracted_ITS or Extracted_BT
 
 --Input_seq
-> This is the fasta file containing your reference sequences at your specific taxonomic level and gene.
+> This fasta file contains the reference sequences at your specific taxonomic level.
 
 --CutValue 
-> This value is the minimum length you are willing to compare the gene you specified after extraction. Sequences above this Cutvalue will not be reconstructed. Therefore, knowing your expected sequence size (65% is good starting point) is important as the greater the length of the sequence the more resolution. 
+> This value is the minimum length you are willing to compare the gene you specified after extraction. Sequences above this Cutvalue will not be reconstructed. Therefore, knowing your expected sequence size (65% is good starting point) is important as the greater the length of the sequence the more resolution you will be able to achieve. 
 
 ## Analysis functions
 
 --build
-> Creates blastdb for each genome and does blast search against your provided reference markers, thereafter, extracting the relevant hit sequences.
+> Creates blastdb for each genome and does a blast search against your provided reference markers, thereafter, extracting the relevant hit sequences.
 
 --extract
-> This determines the longest hit in .bed file and extracts it.
+> This determines the longest hit in from your blast search and extracts it and any other shorter sequences related to the relative marker hit.
 
 --reconstruct
-> Reconstructs marker over separate contigs and adds to marker file in prep for --tree. Requires reference.fa in $Working_Directory.
+> If sequences are bellow the --THRESHOLD value, this script attempts to reconstructs these markers over the separate contigs to imrpove their length. In addition, to filtering the relevant hits in preparation for --tree.
 
 --tree
 > This does alignment, trimming, and constructs the tree.
