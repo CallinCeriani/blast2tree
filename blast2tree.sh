@@ -1,4 +1,6 @@
 #!/bin/bash
+# Determine the script's directory dynamically
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 ############################################################
 # Function to source files in a directory based on extension #
@@ -22,27 +24,27 @@ Help() {
   echo
   echo -e "${BLUE}----------------------------- Processing parameters -----------------------------${RESET}"
   echo
-  echo -e " --threads|-t|--Cpus                  default = 2" 
-  echo -e " --wd                                 default = uses your current directory. $PWD"
-  echo -e " --Run_name|--s                       default = None. Run name and named logfile."
-  echo -e " --THRESHOLD                          default = "
-  echo -e " --MARKER_BLAST_ID                    default = "
-  echo -e " --EXTRACTED_MARKER_OUT               default = "
-  echo -e " --Input_seq                          default = " 
-  echo -e " --CutValue                           default = " 
+  echo -e " --threads|-t|--Cpus           default = 2" 
+  echo -e " --wd                          default = uses your current directory. $PWD"
+  echo -e " --Run_name|--s                default = None. Run name and named logfile."
+  echo -e " --THRESHOLD                   default = "
+  echo -e " --MARKER_BLAST_ID             default = "
+  echo -e " --EXTRACTED_MARKER_OUT        default = "
+  echo -e " --Input_seq                   default = " 
+  echo -e " --CutValue                    default = " 
   echo
   echo -e "${BLUE}------------------------------- Analysis functions ------------------------------${RESET}"
   echo
-  echo -e " --build               (Utilizes: ${GREEN}$blast, $bedtools.${RESET} Create blastdb for genome and  blast search our reference markers, whiling extracting sequences."
-  echo -e " --extract             (Utilizes: ${GREEN}Custom script.${RESET} This determines the longest hit in .bed file and extracts it." 
-  echo -e " --reconstruct         (Utilizes: ${GREEN}$cap3, $bedtools.${RESET} Reconstructs marker over separate contigs and adds to marker file in prep for --tree. Requires reference.fa in $Working_Directory."
-  echo -e " --tree                (Utilizes: ${GREEN}$muscle, $trimal, $iqtree.${RESET} This does alignment, trimming and constructs the tree." 
+  echo -e " --build                     (Utilizes: ${GREEN}$blast, $bedtools.${RESET} Create blastdb for genome and  blast search our reference markers, whiling extracting sequences."
+  echo -e " --extract                   (Utilizes: ${GREEN}Custom script.${RESET} This determines the longest hit in .bed file and extracts it." 
+  echo -e " --reconstruct               (Utilizes: ${GREEN}$cap3, $bedtools.${RESET} Reconstructs marker over separate contigs and adds to marker file in prep for --tree. Requires reference.fa in $Working_Directory."
+  echo -e " --tree                      (Utilizes: ${GREEN}$muscle, $trimal, $iqtree.${RESET} This does alignment, trimming and constructs the tree." 
   echo 
   echo -e "${BLUE}------------------------------- Utility functions -------------------------------${RESET}"
   echo
-  echo -e " --variables|--l                      Display BUSCO, Augustus and NCBI taxonomic ID options or databases"
-  echo -e " --rename_contigs|--K                 Renames all .fasta contigs in a directory based on filename(s). output is in the directory renamed_contigs. Built into --busco_batch"
-  echo -e " --make_files|--mk                    Makes a folder for all .fasta's in a directory and moves them into their corresponding folder"
+  echo -e " Variables|--l               Display BUSCO, Augustus and NCBI taxonomic ID options or databases"
+  echo -e " rename contigs|--K          Renames all .fasta contigs in a directory based on filename(s). output is in the directory renamed_contigs. Built into --busco_batch"
+  echo -e " Make files|--M              Makes a folder for all .fasta's in a directory and moves them into their corresponding folder"
   echo
   echo -e "${BLUE}--------------------------------- Example usage ---------------------------------${RESET}"
   echo
@@ -69,7 +71,7 @@ echo -e "${CYAN}================================================================
 #######################################################
 
 # Main configuration file path
-MAIN_CONF="/opt/bin/config/main.conf"
+MAIN_CONF="${SCRIPT_DIR}/config/main.conf"
 
 source_main_conf() {
   if [ -f "$MAIN_CONF" ]; then
@@ -122,17 +124,17 @@ handle_conflicts() {
 refresh_configurations() {
   #echo -e "${GREEN}Refreshing configurations with updated values...${RESET}"
   source_main_conf
-  source_files_in_dir "/opt/bin/config" "conf" "No configuration files found in /opt/bin/config"
-  source_files_in_dir "/opt/bin/lib" "sh" "No scripts found in /opt/bin/lib"
-  source_files_in_dir "/opt/bin/misc" "sh" "No scripts found in /opt/bin/misc"
+  source_files_in_dir "${SCRIPT_DIR}/config" "conf" "No configuration files found in ${SCRIPT_DIR}/config"
+  source_files_in_dir "${SCRIPT_DIR}/lib" "sh" "No scripts found in ${SCRIPT_DIR}/lib"
+  source_files_in_dir "${SCRIPT_DIR}/misc" "sh" "No scripts found in ${SCRIPT_DIR}/misc"
 }
 
 # Source the main configuration file
 source_main_conf
-# Source scripts from lib/ and misc/ directories
-source_files_in_dir "/opt/bin/config" "conf" "No configuration files found in /opt/bin/config"
-source_files_in_dir "/opt/bin/lib" "sh" "No scripts found in /opt/bin/lib"
-source_files_in_dir "/opt/bin/misc" "sh" "No scripts found in /opt/bin/misc"
+# Source scripts from config/, lib/ and misc/ directories (CHANGED: use SCRIPT_DIR)
+source_files_in_dir "${SCRIPT_DIR}/config" "conf" "No configuration files found in ${SCRIPT_DIR}/config"
+source_files_in_dir "${SCRIPT_DIR}/lib" "sh" "No scripts found in ${SCRIPT_DIR}/lib"
+source_files_in_dir "${SCRIPT_DIR}/misc" "sh" "No scripts found in ${SCRIPT_DIR}/misc"
 
 # Default values for new options
   Cpus=2
@@ -240,19 +242,19 @@ while [[ $# -gt 0 ]]; do
        refresh_configurations
        shift 2
        ;;
-    --build)  # Run build script
+    --build|--A)  # Run build script
        log_and_time "build" "$Log_DIR/$Logfile"
        shift
        ;;
-    --extract)  # Run extract script
+    --extract|--B)  # Run extract script
        log_and_time "extract" "$Log_DIR/$Logfile"
        shift
        ;;
-    --reconstruct)  # Run reconstruct script
+    --reconstruct|--C)  # Run reconstruct script
        log_and_time "reconstruct" "$Log_DIR/$Logfile"
        shift
        ;;
-    --tree)  # Run tree script
+    --tree|--D)  # Run tree script
        log_and_time "tree" "$Log_DIR/$Logfile"
        shift
        ;;
@@ -264,7 +266,7 @@ while [[ $# -gt 0 ]]; do
        rename_contigs
        shift
        ;;
-    --make_files|--mk)  # Make files for all .fasta
+    --make_files|--M)  # Make files for all .fasta
        make_files
        shift
        ;;
