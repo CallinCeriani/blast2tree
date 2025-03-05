@@ -6,7 +6,7 @@ Requires:
 - A single fasta file containing the best representation from the reference markers
 - Assembled genomes in the .fasta or .fna format
 
-#### Utilizes: 
+### Utilizes: 
 - [blast](https://anaconda.org/bioconda/blast) 
 - [bedtools](https://anaconda.org/bioconda/bedtools)
 - [cap3](https://anaconda.org/bioconda/cap3)
@@ -68,3 +68,6 @@ Rename contigs|--K
 
 Make files|--M
 > Makes a folder for all .fasta's in a directory based on their names and moves them into their corresponding folder.
+
+### Disclaimer
+Those markers which have been reconstructed and meet the minimum length for comparison are often skewed to that of the reference marker from which they are reconstructed.
