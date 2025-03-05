@@ -79,7 +79,7 @@ reconstruct|--C
 > If sequences are bellow the --THRESHOLD value, this script attempts to reconstructs these markers over the separate contigs to imrpove their length. In addition, to filtering the relevant hits in preparation for --tree.
 
 tree|--D
-> This does alignment, trimming, and constructs the tree.
+> This does alignment, trimming, and constructs the tree. `iqtree2 -m MFP -bb 1000 -alrt 1000` `trimal -automated1` `mafft --auto`
 
 ## Utility functions
 Rename contigs|--K
