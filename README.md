@@ -2,7 +2,7 @@
 
 [![install with bioconda](https://img.shields.io/badge/install%20with-bioconda-brightgreen.svg?style=flat)](https://bioconda.github.io/)
 
-A experimental Linux pipeline designed around fungi to quickly get genus-level identification for many genomes of uncertain classification at your chosen classification level. In addition, sequences of interest are generated for manual perusal. 
+An experimental Linux pipeline designed around fungi to quickly get genus-level identification for many genomes that have been sampled of uncertain classification at your chosen classification level. In addition, sequences of interest are generated for manual perusal. 
 
 **Requires:**
 - Working conda or miniconda installation [miniconda](https://www.anaconda.com/download/success)
@@ -77,7 +77,7 @@ Extract|--B
 > This determines the longest hit in from your blast search and extracts it and any other shorter sequences related to the relative marker that produced the longest hit.
 
 Reconstruct|--C
-> If sequences are bellow the --THRESHOLD value, this script attempts to reconstructs these markers over the separate contigs to imrpove their length. In addition, to filtering the relevant hits in preparation for --tree.
+> If sequences are below the --THRESHOLD value, this script attempts to reconstructs these markers over the separate contigs to improve their length. In addition, to filtering the relevant hits in preparation for --tree.
 > `cap3 -m 60 -p 75 -g 1`
 
 Tree|--D
