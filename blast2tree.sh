@@ -126,7 +126,7 @@ source_files_in_dir "${SCRIPT_DIR}/misc" "sh" "No scripts found in ${SCRIPT_DIR}
   MARKER_BLAST_ID= 
   EXTRACTED_MARKER_OUT=               
   Input_seq=                              
-  CutValue=""
+  CutValue=
    
 ############################################################
 # Function to log the time and output of a command         #
