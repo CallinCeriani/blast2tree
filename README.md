@@ -62,7 +62,7 @@ Working directory|--wd
 > Uses your current directory as the expected working directory.
 
 Run name|--s
->Run name and corresponding logfile output identifier.
+> Run name and corresponding logfile output identifier.
 
 --THRESHOLD
 > This is the minimum length required for final processing to ensure quality through higher-length sequences. Sequences that are less than this value are removed from the final analysis (tree making) and are moved to a leftovers.fasta file
