@@ -145,7 +145,7 @@ while [[ $# -gt 0 ]]; do
   case "$1" in
     -t)  # Set number of threads
        if [[ -z "$2" ]]; then
-         echo "Error: --threads requires a value"
+         echo "Error: -t requires a value"
          exit 1
        fi
        Cpus="$2"
@@ -154,7 +154,7 @@ while [[ $# -gt 0 ]]; do
        ;;
     --wd)  # Set directory path
        if [[ -z "$2" ]]; then
-         echo "Error: --working_directory requires a value"
+         echo "Error: --wd requires a value"
          exit 1
        fi
        Working_Directory="$2"
@@ -163,7 +163,7 @@ while [[ $# -gt 0 ]]; do
        ;;
     --s)  # Set sample name
        if [[ -z "$2" ]]; then
-         echo "Error: --sample_name requires a value"
+         echo "Error: --s requires a value"
          exit 1
        fi
        Input_name="$2"
