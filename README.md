@@ -47,6 +47,12 @@ conda activate Blast2Tree
 blast2tree.sh -h
 ```
 
+- To view your phylogenetic tree activate the conda environment and do
+```
+figtree
+```
+After which you will load in your .treefile found in the --MARKER_BLAST_ID /dir/
+
 ## Processing parameters
 
 Threads|-t
@@ -61,8 +67,11 @@ Run name|--s
 --THRESHOLD
 > This is the minimum length required for final processing to ensure quality through higher-length sequences. Sequences that are less than this value are removed from the final analysis (tree making) and are moved to a leftovers.fasta file
 
+--MARKER_NAME
+> Name of your gene marker e.g. ITS or BT
+
 --MARKER_BLAST_ID
-> Name of your gene marker e.g. ITS or BT 
+> Output folder e.g. ITS_Marker, BT_Marker
 
 --EXTRACTED_MARKER_OUT
 > Name of the folder for the extracted sequences related to your marker e.g. Extracted_ITS or Extracted_BT
