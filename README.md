@@ -51,7 +51,7 @@ blast2tree.sh -h
 ```
 figtree
 ```
-After which you will load in your .treefile found in the --MARKER_BLAST_ID /dir/
+After which to view the results, load in your .treefile found in the --MARKER_BLAST_ID /dir/ that was set
 
 ## Processing parameters
 
