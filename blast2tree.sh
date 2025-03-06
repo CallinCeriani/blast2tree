@@ -26,7 +26,7 @@ Help() {
   echo
   echo -e " Threads|-t                         default = 1" 
   echo -e " Working directory|--wd             default = uses your current directory. $PWD"
-  echo -e " Run name|--s                       default = None. Run name and named logfile."
+  echo -e " Run name|--s                       default = None. Name of and logfile."
   echo -e " --THRESHOLD                        default = None"
   echo -e " --MARKER_BLAST_ID                  default = None"
   echo -e " --MARKER_BLAST_ID                  default = None"
