@@ -36,6 +36,12 @@ chmod +x /path/to/blast2tree.sh
 
 **To run:**
 - Add your genome files (either .fasta or .fna) to a folder containing a file for the reference (.fa) and the markers (.fa)
+  
+- Then do
+```
+conda activate Blast2Tree
+```
+  
 - To get the help menu do
 ```
 blast2tree.sh -h
