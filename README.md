@@ -14,7 +14,6 @@ An experimental Linux pipeline designed around fungi to quickly get genus-level 
 - [blast](https://anaconda.org/bioconda/blast) 
 - [bedtools](https://anaconda.org/bioconda/bedtools)
 - [cap3](https://anaconda.org/bioconda/cap3)
-- [bedtools](https://anaconda.org/bioconda/bedtools)
 - [mafft](https://anaconda.org/bioconda/mafft)
 - [trimal](https://anaconda.org/bioconda/trimal)
 - [iqtree](https://anaconda.org/bioconda/iqtree)
