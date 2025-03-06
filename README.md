@@ -23,7 +23,7 @@ An experimental Linux pipeline designed around fungi to quickly get genus-level 
 1) [Download](https://github.com/CallinCeriani/Blast2Tree/archive/refs/tags/Versions.tar.gz)
 2) Install the conda environment with
 ```
-conda env create -f /path/to/download/Blast2Tree_environment.yml
+conda env create -f /path/to/download/blast2tree_environment.yml
 ```
 3) Set the script blast2tree.sh to path with
 ```
