@@ -18,7 +18,7 @@ COPY . /blast2tree/
 RUN conda env create -f blast2tree/blast2tree_environment.yml
 
 # Add main script to path
-ENV PATH="$PATH:/blast2tree/blast2tree.sh"
+ENV PATH="$PATH:/blast2tree/"
 
 # Add execute permission 
 RUN chmod +x /blast2tree/blast2tree.sh
