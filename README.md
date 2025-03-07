@@ -5,7 +5,7 @@
 An experimental Linux pipeline designed around fungi to quickly get genus-level identification for many genomes that have been sampled of uncertain classification at your chosen classification level. In addition, sequences of interest are generated for manual perusal. 
 
 **Requires:**
-- Working conda or miniconda installation [miniconda](https://www.anaconda.com/download/success)
+- Working conda or miniconda installation [miniconda](https://www.anaconda.com/download/success) (to make sure its update to date do `conda update -n base --all`)
 - A fasta file with your reference markers for each of the known species across your chosen classification level
 - A single fasta file containing the best representation from the reference markers
 - Assembled genomes in the .fasta or .fna format
