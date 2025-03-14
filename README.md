@@ -17,6 +17,7 @@ An experimental Linux pipeline designed around fungi to quickly get genus-level 
 - [mafft](https://anaconda.org/bioconda/mafft)
 - [trimal](https://anaconda.org/bioconda/trimal)
 - [iqtree](https://anaconda.org/bioconda/iqtree)
+- [Parallel](https://anaconda.org/conda-forge/parallel)
 
 ## How to install
 1) [Download](https://github.com/CallinCeriani/Blast2Tree/archive/refs/tags/Versions.tar.gz)
