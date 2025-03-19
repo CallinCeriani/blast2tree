@@ -85,10 +85,10 @@ Extract|--B
 > This determines the longest hit in from your blast search and extracts it and any other shorter sequences related to the relative marker that produced the longest hit. After extraction determine the marker that had the best hit your data and add it to a file reference.fa with a unique header e.g. >best hit
 
 Reconstruct|--C
-> If sequences are below the --THRESHOLD value, this script attempts to reconstruct these markers over the separate contigs to improve their length. In addition, to filtering the relevant hits in preparation for --tree.
+> If sequences are below the --THRESHOLD value, this script attempts to reconstruct these markers through overlapping sequences from separate contigs to improve their length. In addition, it filters the relevant hits in preparation for --tree.
 
 Tree|--D
-> This does alignment, trimming, and constructing of the tree.
+> This does alignment, trimming, and construction of the phylogenetic tree.
 
 ## Utility functions
 Rename contigs|--K
