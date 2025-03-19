@@ -2,7 +2,7 @@
 
 [![install with bioconda](https://img.shields.io/badge/install%20with-bioconda-brightgreen.svg?style=flat)](https://bioconda.github.io/)
 
-An experimental Linux pipeline designed around haploid fungi to quickly get genus-level identification for many genomes that have been sampled of uncertain classification at your chosen classification level. In addition, sequences of interest are generated for manual perusal. Ideally, targeted sequences are single-copy taxonomic-informative markers.
+An experimental Linux pipeline optimized for haploid fungi, enabling rapid genus-level identification of multiple genomes with uncertain classification at a user-defined taxonomic level. Additionally, it extracts sequences of interest for manual review. Sequences should be single-copy and taxonomically informative.
 
 **Requires:**
 - Working conda or miniconda installation [miniconda](https://www.anaconda.com/download/success) (to make sure its update to date do `conda update -n base --all`)
