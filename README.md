@@ -98,7 +98,7 @@ Make files|--M
 > Makes a folder for all .fasta's in a directory based on their names and moves them into their corresponding folder.
 
 ### Disclaimer
-Those markers which have been reconstructed and meet the minimum length for comparison are often skewed to that of the reference marker from which they are reconstructed.
+Those markers which have been reconstructed and meet the minimum length for comparison are often skewed to that of the reference marker from which they are reconstructed. The Docker container/version of the code is still in development.
 
 ## How to uninstall
 > `conda remove -n Blast2Tree --all` 
