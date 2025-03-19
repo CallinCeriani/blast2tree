@@ -42,7 +42,6 @@ function build() {
     rm -rf "$GENOME_DIR"/*.{ndb,nhr,nin,njs,not,nsq,ntf,nto,fai}  
 
     ##############################################
-    # Function: run_makeblastdb
     # Creates BLAST databases in parallel from genome files.
     ##############################################
 
@@ -77,7 +76,6 @@ run_blastdb_parallel() {
 }
     
     ##############################################
-    # Function: run_blast_search
     # Runs BLAST searches in parallel.
     ##############################################
 
@@ -121,9 +119,7 @@ run_blast_parallel() {
     echo "BLAST searches completed!"
 }
 
- 
     ##############################################
-    # Function: run_convert_to_bed
     # Converts BLAST TSV results to BED format in parallel.
     ##############################################
     
@@ -160,9 +156,7 @@ Convert_bed() {
     echo "BED file conversion complete!"
 }
 
-
     ##############################################
-    # Function: run_extract_seq
     # Extracts sequences from genome files based on BED coordinates in parallel.
     ##############################################
 
