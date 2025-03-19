@@ -7,7 +7,7 @@ An experimental Linux pipeline optimized for haploid fungi, enabling rapid genus
 **Requires:**
 - Working conda or miniconda installation [miniconda](https://www.anaconda.com/download/success) (to make sure its update to date do `conda update -n base --all`)
 - A fasta file with your reference markers for each of the known species across your chosen classification level (e.g. ITS.fa)
-- A single fasta file containing the best representation from the e.g. reference markers (i.e. the best hit sequence after blast and extraction reference.fa)
+- A fasta file containing a single sequence best representing the reference markers (i.e. the best hit marker after blast and extraction e.g. reference.fa)
 - Assembled genomes in the .fasta or .fna format (e.g. isolate_100.fasta)
 
 **Utilizes:**
