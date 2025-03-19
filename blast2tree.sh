@@ -28,10 +28,10 @@ Help() {
   echo -e " Jobs|--jobs                    default = 2"
   echo -e " Working directory|--wd         default = uses your current directory. $PWD"
   echo -e " Run name|--s                   default = None. Run name and named logfile."
-  echo -e " --THRESHOLD                    default = 300. Ninimum length required for final processing - less than this value are removed - moved to a leftovers.fasta file"
-  echo -e " --MARKER_NAME                  defualt = ITS"
-  echo -e " --Input_seq                    default = ITS.fa" 
-  echo -e " --CutValue                     default = 450. minimum length  to compare the gene you specified - Sequences above this Cutvalue will not be reconstructed" 
+  echo -e " --THRESHOLD                    default = None. e.g. 300. Minimum length required for final processing - less than this value are removed - moved to a leftovers.fasta file"
+  echo -e " --MARKER_NAME                  defualt = None. e.g. ITS"
+  echo -e " --Input_seq                    default = None. e.g. ITS.fa" 
+  echo -e " --CutValue                     default = None. e.g. 450. Minimum length  to compare the gene you specified - Sequences above this Cutvalue will not be reconstructed" 
   echo
   echo -e "${BLUE}------------------------------- Phylogenetic functions ------------------------------${RESET}"
   echo
@@ -122,10 +122,10 @@ source_files_in_dir "${SCRIPT_DIR}/misc" "sh" "No scripts found in ${SCRIPT_DIR}
   jobs=2
   Working_Directory="$PWD"
   Input_name=""
-  THRESHOLD=300                                    
+  THRESHOLD=""                                    
   MARKER_NAME=""
   Input_seq=""
-  CutValue="450"
+  CutValue=""
    
 ############################################################
 # Function to log the time and output of a command         #
