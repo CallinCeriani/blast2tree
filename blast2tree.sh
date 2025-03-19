@@ -24,14 +24,14 @@ Help() {
   echo
   echo -e "${BLUE}----------------------------- Processing parameters -----------------------------${RESET}"
   echo
-  echo -e " Threads|-t|--Cpus               default = 2" 
-  echo -e " Jobs|--jobs                     default = 2"
-  echo -e " Working directory|--wd          default = uses your current directory. $PWD"
-  echo -e " Run name|--s                    default = None. Run name and named logfile."
-  echo -e " --THRESHOLD                     default = 300. Ninimum length required for final processing - less than this value are removed - moved to a leftovers.fasta file"
-  echo -e " --MARKER_NAME                   defualt = ITS"
-  echo -e " --Input_seq                     default = ITS.fa" 
-  echo -e " --CutValue                      default = 450. minimum length  to compare the gene you specified - Sequences above this Cutvalue will not be reconstructed" 
+  echo -e " Threads|-t|--Cpus              default = 2" 
+  echo -e " Jobs|--jobs                    default = 2"
+  echo -e " Working directory|--wd         default = uses your current directory. $PWD"
+  echo -e " Run name|--s                   default = None. Run name and named logfile."
+  echo -e " --THRESHOLD                    default = 300. Ninimum length required for final processing - less than this value are removed - moved to a leftovers.fasta file"
+  echo -e " --MARKER_NAME                  defualt = ITS"
+  echo -e " --Input_seq                    default = ITS.fa" 
+  echo -e " --CutValue                     default = 450. minimum length  to compare the gene you specified - Sequences above this Cutvalue will not be reconstructed" 
   echo
   echo -e "${BLUE}------------------------------- Phylogenetic functions ------------------------------${RESET}"
   echo
