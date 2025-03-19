@@ -42,7 +42,6 @@ Help() {
   echo 
   echo -e "${BLUE}------------------------------- Utility functions -------------------------------${RESET}"
   echo
-  echo -e " Variables|--l                  Display BUSCO, Augustus and NCBI taxonomic ID options or databases"
   echo -e " Rename contigs|--K             Renames all .fasta contigs in a directory based on filename(s). output is in the directory renamed_contigs."
   echo -e " Make files|--M                 Makes a folder for all .fasta's in a directory and moves them into their corresponding folder"
   echo
@@ -229,10 +228,6 @@ while [[ $# -gt 0 ]]; do
        ;;
     --D)  # Run tree script
        log_and_time "tree" "$Log_DIR/$Logfile"
-       shift
-       ;;
-    --l)  # Display variables
-       Variables
        shift
        ;;
     --K)  # Rename contigs
