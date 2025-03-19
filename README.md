@@ -64,9 +64,6 @@ Working directory|--wd
 Run name|--s
 > Run name and corresponding logfile output identifier.
 
---THRESHOLD
-> This is the minimum length required for final processing to ensure quality through higher-length sequences. Sequences that are less than this value are removed from the final analysis (tree making) and are moved to a leftovers.fasta file
-
 --MARKER_NAME
 > Name of your gene marker e.g. ITS or BT
 
@@ -74,7 +71,10 @@ Run name|--s
 > This fasta file contains the reference sequences at your specific taxonomic level. e.g. ITS.fa
 
 --CutValue 
-> This value is the minimum length you are willing to compare the gene you specified after extraction. Sequences above this Cutvalue will not be reconstructed. Therefore, knowing your expected sequence size (65% is good starting point) is important as the greater the length of the sequence the more resolution you will be able to achieve. 
+> This value is the minimum length you are willing to compare the genes you specified after extraction. Sequences above this Cutvalue will not be reconstructed. Therefore, knowing your expected sequence size (65% is good starting point) is important as the greater the length of the sequence the more resolution you will be able to achieve.
+
+ --THRESHOLD
+> This is the minimum length required for final processing to ensure quality through higher-length sequences. Sequences that are less than this value are removed from the final analysis (tree making process) and are moved to a leftovers.fasta file
 
 ## Analysis functions
 
