@@ -35,10 +35,10 @@ Help() {
   echo
   echo -e "${BLUE}------------------------------- Phylogenetic functions ------------------------------${RESET}"
   echo
-  echo -e " Build|--A                      (Utilizes: ${GREEN}$blast, $bedtools.${RESET} Requires --K. Creates blast_db for genomes, blasting and extracting the relevant hit."
-  echo -e " Extract|--B                    (Utilizes: ${GREEN}Custom script.${RESET} Requires --build. This determines the longest hit in .bed file and extracts it." 
-  echo -e " Reconstruct|--C                (Utilizes: ${GREEN}$cap3, $bedtools.${RESET} Requires --extract. Reconstructs marker over separate contigs. Requires reference.fa and marker.fa."
-  echo -e " Tree|--D                       (Utilizes: ${GREEN}$muscle, $trimal, $iqtree.${RESET} Requires --reconstruct. This does alignment, trimming and constructs the tree."
+  echo -e " Build|--A                      Requires --K. Creates blast_db for genomes, blasting and extracting the relevant hit."
+  echo -e " Extract|--B                    Requires --build. This determines the longest hit in .bed file and extracts it." 
+  echo -e " Reconstruct|--C                Requires --extract. Reconstructs marker over separate contigs. Requires reference.fa and marker.fa."
+  echo -e " Tree|--D                       Requires --reconstruct. This does alignment, trimming and constructs the tree."
   echo 
   echo -e "${BLUE}------------------------------- Utility functions -------------------------------${RESET}"
   echo
