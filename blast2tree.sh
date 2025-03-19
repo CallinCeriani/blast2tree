@@ -28,11 +28,6 @@ Help() {
   echo -e " Jobs|--jobs                     default = 2"
   echo -e " Working directory|--wd          default = uses your current directory. $PWD"
   echo -e " Run name|--s                    default = None. Run name and named logfile."
-  echo -e " Species name|--sp               default = None. Do use underscores for space, e.g. Genus_species or Aspergillus_fumigatus"
-  echo -e " Busco taxon|-busco|--busco      default = sordariomycetes_odb10. Do sentral --l to get the options"
-  echo -e " Augustus species|--augustus     default = fusarium_graminearum. Do sentral --l to get the options"
-  echo -e " Reference fasta|--ref_fa        default = Fusarium circinatum. Set /path/to/your/reference.fasta. Check the reference genomes in your home dir."
-  echo -e " Reference gff3|--ref_gf3        default = Fusarium circinatum. Set /path/to/your/reference.gff3"
   echo -e " --THRESHOLD                     default = 300. Ninimum length required for final processing - less than this value are removed - moved to a leftovers.fasta file"
   echo -e " --MARKER_NAME                   defualt = ITS"
   echo -e " --Input_seq                     default = ITS.fa" 
@@ -44,12 +39,6 @@ Help() {
   echo -e " Extract|--B                    (Utilizes: ${GREEN}Custom script.${RESET} Requires --build. This determines the longest hit in .bed file and extracts it." 
   echo -e " Reconstruct|--C                (Utilizes: ${GREEN}$cap3, $bedtools.${RESET} Requires --extract. Reconstructs marker over separate contigs. Requires reference.fa and marker.fa."
   echo -e " Tree|--D                       (Utilizes: ${GREEN}$muscle, $trimal, $iqtree.${RESET} Requires --reconstruct. This does alignment, trimming and constructs the tree."
-  echo -e " Supermatrix|--E                (Utilizes: ${GREEN}${RESET} ."
-  echo
-  echo -e " ${BLUE}------------------------------- Phylogenomic functions ------------------------------${RESET}"
-  echo
-  echo -e " busco batch|--U                (Utilizes: ${GREEN}$seqkit, $busco, $quast.${RESET} Processes all fastas in a dir & requires --reference_fasta, --busco_taxon, and --augustus_species)"
-  echo -e " phylo|--P                      (Utilizes: $BUSCO_phylogenomics is a custom script that produces gene-tree and supermatrix files. Requires --busco_batch before proceeding)"
   echo 
   echo -e "${BLUE}------------------------------- Utility functions -------------------------------${RESET}"
   echo
@@ -134,26 +123,10 @@ source_files_in_dir "${SCRIPT_DIR}/misc" "sh" "No scripts found in ${SCRIPT_DIR}
   jobs=2
   Working_Directory="$PWD"
   Input_name=""
-  Busco_taxon="sordariomycetes_odb10"
-  Augustus_species="fusarium_graminearum"
-  TaxID=""
-  species=""
-  
-# Reference Sequences #
-  Reference_fasta=$Reference_path/Fusarium_circinatum/GCA_024047395.1/GCA_024047395.1_ASM2404739v1_genomic.fna
-  #/Chrysoporthe_austroafricanus/GCA_001051155.2/GCA_001051155.2_ASM105115v2_genomic.fna
-#e.g.    Reference_fasta=$Reference_path/Fusarium_circinatum/
-#e.g.    Reference_fasta=$Reference_path/Fusarium_circinatum/
-
-# Reference Annotations #
-#Reference_gff3=$Reference_path/Fusarium_circinatum/FSP34_annotation.gff3
-#e.g   Reference_fasta=$Reference_path/Fusarium_circinatum/
-#e.g.  Reference_fasta=$Reference_path/Fusarium_circinatum/
-
-   THRESHOLD=300                                    
-   MARKER_NAME=""
-   Input_seq=""
-   CutValue="450"
+  THRESHOLD=300                                    
+  MARKER_NAME=""
+  Input_seq=""
+  CutValue="450"
    
 ############################################################
 # Function to log the time and output of a command         #
@@ -203,51 +176,6 @@ while [[ $# -gt 0 ]]; do
          exit 1
        fi
        Input_name="$2"
-       refresh_configurations
-       shift 2
-       ;;
-    --sp)  # Set species name
-       if [[ -z "$2" ]]; then
-         echo "Error:--sp requires a value"
-         exit 1
-       fi
-       species="$2"
-       refresh_configurations
-       shift 2
-       ;;
-    --busco)  # Set BUSCO taxon
-       if [[ -z "$2" ]]; then
-         echo "Error: --busco requires a value"
-         exit 1
-       fi
-       Busco_taxon="$2"
-       refresh_configurations
-       shift 2
-       ;;
-    --augustus)  # Set Augustus species
-       if [[ -z "$2" ]]; then
-         echo "Error: --augustus requires a value"
-         exit 1
-       fi
-       Augustus_species="$2"
-       refresh_configurations
-       shift 2
-       ;;
-    --ref_fa)  # Set reference fasta directory
-       if [[ -z "$2" ]]; then
-         echo "Error: --ref_fa requires a value"
-         exit 1
-       fi
-       Reference_fasta="$2"
-       refresh_configurations
-       shift 2
-       ;;
-    --ref_gff3)  # Set reference gff3 directory
-       if [[ -z "$2" ]]; then
-         echo "Error:  --ref_gff3 requires a value"
-         exit 1
-       fi
-       Reference_gff3="$2"
        refresh_configurations
        shift 2
        ;;
@@ -301,18 +229,6 @@ while [[ $# -gt 0 ]]; do
        ;;
     --D)  # Run tree script
        log_and_time "tree" "$Log_DIR/$Logfile"
-       shift
-       ;;
-    --E)  # Run Supermatrix script
-       log_and_time "Supermatrix" "$Log_DIR/$Logfile"
-       shift
-       ;;
-    --U)  # Run BUSCO batch
-       log_and_time "Busco_batch" "$Log_DIR/$Logfile"
-       shift
-       ;;
-    --P)  # Run BUSCO phylogenomics
-       log_and_time "Phylogenomics" "$Log_DIR/$Logfile"
        shift
        ;;
     --l)  # Display variables
