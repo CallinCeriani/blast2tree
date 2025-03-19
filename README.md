@@ -6,9 +6,9 @@ An experimental Linux pipeline designed around haploid fungi to quickly get genu
 
 **Requires:**
 - Working conda or miniconda installation [miniconda](https://www.anaconda.com/download/success) (to make sure its update to date do `conda update -n base --all`)
-- A fasta file with your reference markers for each of the known species across your chosen classification level
-- A single fasta file containing the best representation from the reference markers
-- Assembled genomes in the .fasta or .fna format
+- A fasta file with your reference markers for each of the known species across your chosen classification level (e.g. ITS.fa)
+- A single fasta file containing the best representation from the reference markers (i.e. the best hit sequence after blast and extraction reference.fa)
+- Assembled genomes in the .fasta or .fna format (e.g. CMW100.fasta)
 
 **Utilizes:**
 - [blast](https://anaconda.org/bioconda/blast) 
@@ -83,7 +83,7 @@ Build|--A
 > `-evalue 1e-10 -gapopen 5 -gapextend 2 -perc_identity 89 -qcov_hsp_perc 20 -max_target_seqs 5 -word_size 7`
 
 Extract|--B
-> This determines the longest hit in from your blast search and extracts it and any other shorter sequences related to the relative marker that produced the longest hit.
+> This determines the longest hit in from your blast search and extracts it and any other shorter sequences related to the relative marker that produced the longest hit. After extraction determine the marker that had the best hit your data and add it to a file reference.fa with a unique header e.g. >best hit
 
 Reconstruct|--C
 > If sequences are below the --THRESHOLD value, this script attempts to reconstructs these markers over the separate contigs to improve their length. In addition, to filtering the relevant hits in preparation for --tree.
