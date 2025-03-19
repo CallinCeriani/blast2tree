@@ -51,7 +51,7 @@ Help() {
 
 Wrong() {
 echo
-echo -e "${CYAN}This is C. Ceriani's experimental pipeline (2024)${RESET}"
+echo -e "${CYAN}This is an experimental pipeline and likely will have bugs${RESET}"
 echo -e "${CYAN}============================ CONFIGURATION INFORMATION ============================${RESET}"
 echo -e "  Working Directory: $Working_Directory"
 echo -e "  Sample Name:       $Input_name"
