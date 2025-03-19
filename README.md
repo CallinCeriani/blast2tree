@@ -103,4 +103,4 @@ Those markers which have been reconstructed and meet the minimum length for comp
 ## How to uninstall
 > `conda remove -n Blast2Tree --all` 
 > `nano ~/.bashrc and remove set path`
-> `rm -rf blast2tree-v0.0.1` 
+> `rm -rf /path/to/blast2tree-v0.0.1` 
