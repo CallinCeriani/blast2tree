@@ -106,5 +106,5 @@ Make files|--M
 Those markers which have been reconstructed and meet the minimum length for comparison are often skewed to that of the reference marker from which they are reconstructed.
 
 ## How to uninstall
-conda remove -n Blast2Tree --all
-edit ~/.bashrc and remove set path
+> `conda remove -n Blast2Tree --all` 
+> `edit ~/.bashrc and remove set path` 
