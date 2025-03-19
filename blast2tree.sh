@@ -35,9 +35,9 @@ Help() {
   echo
   echo -e "${BLUE}------------------------------- Phylogenetic functions ------------------------------${RESET}"
   echo
-  echo -e " Build|--A                      Requires --K. Creates blast_db for genomes, blasting and extracting the relevant hit."
+  echo -e " Build|--A                      Requires --K, --MARKER_NAME, --Input_seq. Creates blast_db for genomes, blasting and extracting the relevant hit."
   echo -e " Extract|--B                    Requires --build. This determines the longest hit in .bed file and extracts it." 
-  echo -e " Reconstruct|--C                Requires --extract. Reconstructs marker over separate contigs. Requires reference.fa and marker.fa."
+  echo -e " Reconstruct|--C                Requires --extract, --CutValue, --THRESHOLD. Reconstructs marker over separate contigs. Requires reference.fa and marker.fa."
   echo -e " Tree|--D                       Requires --reconstruct. This does alignment, trimming and constructs the tree."
   echo 
   echo -e "${BLUE}------------------------------- Utility functions -------------------------------${RESET}"
