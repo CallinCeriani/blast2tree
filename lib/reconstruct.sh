@@ -117,14 +117,14 @@ function reconstruct() {
             # Handle reconstruction via CAP3 and consensus process
             cat "$REFERENCE" "$FASTA" > "$COMBINED"
             echo "Running CAP3 on combined file: $COMBINED"
-            run_analysis "$cap3" "fragment reconstruction" "cap3 \"$COMBINED\" -m 60 -p 80 -o 40 -g 6 > out.txt"
+            run_analysis "$blast2tree" "fragment reconstruction" "cap3 \"$COMBINED\" -m 60 -p 80 -o 40 -g 6 > out.txt"
 
             if [ ! -s out.txt ]; then
                 echo "CAP3 failed to produce output for: $FASTA"
                 continue
             fi
                 
-            run_analysis "$cap3" "fragment reconstruction" "python3 /opt/bin/python_scripts/consensus.py"
+            run_analysis "$blast2tree" "fragment reconstruction" "python3 $Sentral/python_scripts/consensus.py"
             if [ ! -s res.txt ]; then
                 echo "Consensus file (res.txt) is empty for $FASTA. Skipping consensus for this file."
                 continue
