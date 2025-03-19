@@ -2,7 +2,7 @@
 
 [![install with bioconda](https://img.shields.io/badge/install%20with-bioconda-brightgreen.svg?style=flat)](https://bioconda.github.io/)
 
-An experimental Linux pipeline designed around fungi to quickly get genus-level identification for many genomes that have been sampled of uncertain classification at your chosen classification level. In addition, sequences of interest are generated for manual perusal. 
+An experimental Linux pipeline designed around haploid fungi to quickly get genus-level identification for many genomes that have been sampled of uncertain classification at your chosen classification level. In addition, sequences of interest are generated for manual perusal. Ideally, targeted sequences are single-copy taxonomic-informative markers.
 
 **Requires:**
 - Working conda or miniconda installation [miniconda](https://www.anaconda.com/download/success) (to make sure its update to date do `conda update -n base --all`)
@@ -69,12 +69,6 @@ Run name|--s
 
 --MARKER_NAME
 > Name of your gene marker e.g. ITS or BT
-
---MARKER_BLAST_ID
-> Output folder e.g. ITS_Marker, BT_Marker
-
---EXTRACTED_MARKER_OUT
-> Name of the folder for the extracted sequences related to your marker e.g. Extracted_ITS or Extracted_BT
 
 --Input_seq
 > This fasta file contains the reference sequences at your specific taxonomic level. e.g. ITS.fa
