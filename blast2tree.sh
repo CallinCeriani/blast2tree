@@ -106,7 +106,7 @@ refresh_configurations() {
   #echo -e "${GREEN}Refreshing configurations with updated values...${RESET}"
   source_main_conf
   source_files_in_dir "${SCRIPT_DIR}/config" "conf" "No configuration files found in ${SCRIPT_DIR}/config"
-  source_files_in_dir "${SCRIPT_DIR}/lib/phylogenetics" "sh" "No scripts found in ${SCRIPT_DIR}/lib"
+  source_files_in_dir "${SCRIPT_DIR}/lib" "sh" "No scripts found in ${SCRIPT_DIR}/lib"
   source_files_in_dir "${SCRIPT_DIR}/misc" "sh" "No scripts found in ${SCRIPT_DIR}/misc"
 }
 
@@ -114,7 +114,7 @@ refresh_configurations() {
 source_main_conf
 # Source scripts from config/, lib/ and misc/ directories (CHANGED: use SCRIPT_DIR)
 source_files_in_dir "${SCRIPT_DIR}/config" "conf" "No configuration files found in ${SCRIPT_DIR}/config"
-source_files_in_dir "${SCRIPT_DIR}/lib/phylogenetics" "sh" "No scripts found in ${SCRIPT_DIR}/lib"
+source_files_in_dir "${SCRIPT_DIR}/lib" "sh" "No scripts found in ${SCRIPT_DIR}/lib"
 source_files_in_dir "${SCRIPT_DIR}/misc" "sh" "No scripts found in ${SCRIPT_DIR}/misc"
 
 # Default values for new options
