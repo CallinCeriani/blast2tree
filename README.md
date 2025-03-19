@@ -20,7 +20,7 @@ An experimental Linux pipeline designed around haploid fungi to quickly get genu
 - [GNU Parallel](https://anaconda.org/conda-forge/parallel)
 
 ## How to install
-1) [Download]((https://github.com/CallinCeriani/blast2tree/releases)
+1) [Download](https://github.com/CallinCeriani/blast2tree/releases)
 2) Install the conda environment with
 ```
 conda env create -f /path/to/download/blast2tree_environment.yml
