@@ -104,6 +104,6 @@ Make files|--M
 Those markers which have been reconstructed and meet the minimum length for comparison are often skewed to that of the reference marker from which they are reconstructed and should likely be removed from your dataset going forward. The Docker container/version of the code is still in development.
 
 ## How to uninstall
-> `conda remove -n Blast2Tree --all` 
-> `nano ~/.bashrc and remove set path`
-> `rm -rf /path/to/blast2tree-v0.0.1` 
+> To remove enviroment `conda remove -n Blast2Tree --all` 
+> To remove the pathing `nano ~/.bashrc and remove set path`
+> To remove the downloaded program `rm -rf /path/to/blast2tree-v0.0.1` 
