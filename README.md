@@ -105,5 +105,5 @@ Those markers which have been reconstructed and meet the minimum length for comp
 
 ## How to uninstall
 > To remove enviroment `conda remove -n Blast2Tree --all` 
-> To remove the pathing `nano ~/.bashrc and remove set path`
+> To remove the pathing `nano ~/.bashrc`
 > To remove the downloaded program `rm -rf /path/to/blast2tree-v0.0.1` 
