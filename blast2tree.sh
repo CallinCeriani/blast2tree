@@ -24,27 +24,26 @@ Help() {
   echo
   echo -e "${BLUE}----------------------------- Processing parameters -----------------------------${RESET}"
   echo
-  echo -e " Threads|-t                         default = 1" 
-  echo -e " Working directory|--wd             default = uses your current directory. $PWD"
-  echo -e " Run name|--s                       default = None. Name of and logfile."
-  echo -e " --THRESHOLD                        default = None"
-  echo -e " --MARKER_BLAST_ID                  default = None"
-  echo -e " --MARKER_BLAST_ID                  default = None"
-  echo -e " --EXTRACTED_MARKER_OUT             default = None"
-  echo -e " --Input_seq                        default = None" 
-  echo -e " --CutValue                         default = None" 
+  echo -e " Threads|-t                     default = 2" 
+  echo -e " Jobs|--jobs                    default = 2"
+  echo -e " Working directory|--wd         default = uses your current directory. $PWD"
+  echo -e " Run name|--s                   default = None. Run name and named logfile."
+  echo -e " --MARKER_NAME                  defualt = None. e.g. ITS"
+  echo -e " --Input_seq                    default = None. e.g. ITS.fa" 
+  echo -e " --CutValue                     default = None. e.g. 450. Minimum length  to compare the gene you specified - Sequences above this Cutvalue will not be reconstructed" 
+  echo -e " --THRESHOLD                    default = None. e.g. 300. Minimum length required for final processing - less than this value are removed - moved to a leftovers.fasta file"
   echo
-  echo -e "${BLUE}------------------------------- Analysis functions ------------------------------${RESET}"
+  echo -e "${BLUE}------------------------------- Phylogenetic functions ------------------------------${RESET}"
   echo
-  echo -e " Build|--A                 (Utilizes: ${GREEN}$blast, $bedtools.${RESET} Requires --K. Creates blast_db for genomes, blasting and extracting the relevant hit."
-  echo -e " Extract|--B               (Utilizes: ${GREEN}Custom script.${RESET} Requires --build. This determines the longest hit in .bed file and extracts it." 
-  echo -e " Reconstruct|--C           (Utilizes: ${GREEN}$cap3, $bedtools.${RESET} Requires --extract. Reconstructs marker over separate contigs. Requires reference.fa and marker.fa."
-  echo -e " Tree|--D                  (Utilizes: ${GREEN}$muscle, $trimal, $iqtree.${RESET} Requires --reconstruct. This does alignment, trimming and constructs the tree." 
+  echo -e " Build|--A                      Requires --K, --MARKER_NAME, --Input_seq, and yourmarker.fa. Creates blast_db for genomes, blasting and extracting the relevant hit."
+  echo -e " Extract|--B                    Requires --build. This determines the longest hit in .bed file and extracts it. Choose best hitting marker to become reference.fa" 
+  echo -e " Reconstruct|--C                Requires --extract, --CutValue, --THRESHOLD. Reconstructs marker over separate contigs. Requires reference.fa."
+  echo -e " Tree|--D                       Requires --reconstruct. This does alignment, trimming and constructs the tree."
   echo 
   echo -e "${BLUE}------------------------------- Utility functions -------------------------------${RESET}"
   echo
-  echo -e " Rename contigs|--K                 Renames all .fasta contigs in a directory based on filename(s). output is in the directory renamed_contigs."
-  echo -e " Make files|--mk                    Makes a folder for all .fasta's in a directory and moves them into their corresponding folder"
+  echo -e " Rename contigs|--K             Renames all .fasta contigs in a directory based on filename(s). output is in the directory renamed_contigs."
+  echo -e " Make files|--M                 Makes a folder for all .fasta's in a directory and moves them into their corresponding folder"
   echo
   echo -e "${CYAN}=================================== END OF HELP MENU ===================================${RESET}"
   echo
@@ -52,13 +51,13 @@ Help() {
 
 Wrong() {
 echo
-echo -e "${CYAN}This is a experimental pipeline${RESET}"
+echo -e "${CYAN}This is an experimental pipeline and likely will have bugs${RESET}"
 echo -e "${CYAN}============================ CONFIGURATION INFORMATION ============================${RESET}"
 echo -e "  Working Directory: $Working_Directory"
 echo -e "  Sample Name:       $Input_name"
 echo -e "  Number of CPUs:    $Cpus"
 echo
-echo -e "                                   To get help do blast2tree.sh --h"
+echo -e "                                   To get help do phylo1.sh --h"
 echo -e "${CYAN}==================================================================================${RESET}"
 }
 
@@ -120,13 +119,13 @@ source_files_in_dir "${SCRIPT_DIR}/misc" "sh" "No scripts found in ${SCRIPT_DIR}
 
 # Default values for new options
   Cpus=2
+  jobs=2
   Working_Directory="$PWD"
-  THRESHOLD=
-  MARKER_NAME=
-  MARKER_BLAST_ID= 
-  EXTRACTED_MARKER_OUT=               
-  Input_seq=                              
-  CutValue=
+  Input_name=""
+  THRESHOLD=""                                    
+  MARKER_NAME=""
+  Input_seq=""
+  CutValue=""
    
 ############################################################
 # Function to log the time and output of a command         #
@@ -149,6 +148,15 @@ while [[ $# -gt 0 ]]; do
          exit 1
        fi
        Cpus="$2"
+       refresh_configurations
+       shift 2
+       ;;
+    --jobs)  # Set number of Jobs
+       if [[ -z "$2" ]]; then
+         echo "Error: --jobs requires a value"
+         exit 1
+       fi
+       jobs="$2"
        refresh_configurations
        shift 2
        ;;
@@ -188,24 +196,6 @@ while [[ $# -gt 0 ]]; do
        refresh_configurations
        shift 2
        ;;
-    --MARKER_BLAST_ID)  # Set MARKER_BLAST_ID directory
-       if [[ -z "$2" ]]; then
-         echo "Error: --MARKER_BLAST_ID requires a value"
-         exit 1
-       fi
-       MARKER_BLAST_ID="$2"
-       refresh_configurations
-       shift 2
-       ;;
-    --EXTRACTED_MARKER_OUT)  # Set EXTRACTED_MARKER_OUT directory
-       if [[ -z "$2" ]]; then
-         echo "Error: --EXTRACTED_MARKER_OUT requires a value"
-         exit 1
-       fi
-       EXTRACTED_MARKER_OUT="$2"
-       refresh_configurations
-       shift 2
-       ;;
     --Input_seq)  # Set Input_seq directory
        if [[ -z "$2" ]]; then
          echo "Error: --Input_seq requires a value"
@@ -238,10 +228,6 @@ while [[ $# -gt 0 ]]; do
        ;;
     --D)  # Run tree script
        log_and_time "tree" "$Log_DIR/$Logfile"
-       shift
-       ;;
-    --l)  # Display variables
-       Variables
        shift
        ;;
     --K)  # Rename contigs

@@ -2,7 +2,7 @@ services:
   conda:
     build:
       context: .
-    image: "blast2tree:v1.0"
-    container_name: blast2tree
+    image: "blast2tree:0.0.1"
+    container_name: Blast2Tree
     stdin_open: true  # equivalent to -i
     tty: true         # equivalent to -t

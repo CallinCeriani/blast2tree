@@ -78,6 +78,7 @@ dependencies:
   - ncurses=6.5
   - openjdk=23.0.2
   - openssl=3.4.1
+  - parallel=20250222
   - pcre2=10.44
   - perl=5.32.1
   - perl-archive-tar=2.40

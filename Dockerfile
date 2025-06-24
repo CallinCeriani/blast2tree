@@ -12,16 +12,16 @@ RUN conda config --set channel_priority strict
 RUN conda init bash 
 
 # Copy files into image
-COPY . /blast2tree/
+COPY . /blast2tree-0.0.1/
 
 # Create conda Blast2Tree enviroment
-RUN conda env create -f blast2tree/blast2tree_environment.yml
+RUN conda env create -f blast2tree-0.0.1/blast2tree_environment.yml
 
 # Add main script to path
-ENV PATH="$PATH:/blast2tree/blast2tree.sh"
+ENV PATH="$PATH:/blast2tree-0.0.1/"
 
 # Add execute permission 
-RUN chmod +x /blast2tree/blast2tree.sh
+RUN chmod +x /blast2tree-0.0.1/blast2tree.sh
 
 # Command to make container stay running
 CMD ["bin/bash"]
