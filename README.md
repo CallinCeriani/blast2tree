@@ -78,6 +78,9 @@ Run name|--s
 
 ## Analysis functions
 
+Pre-align & trim|--Z
+> Standardizes references markers before using them in blast search and downstream processing
+
 Build|--A
 > Creates blastdb for each genome and does a blast search against your provided reference markers (e.g. ITS.fa), extracting the relevant hit sequences.
 
