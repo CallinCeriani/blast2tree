@@ -47,9 +47,7 @@ function reconstruct() {
     touch "$QUERY_FILE" "$LEFTOVERS"
     echo "Created/checked files: $QUERY_FILE and $LEFTOVERS"
 
-    CAP3_LENGTH_LOG="$Working_Directory/cap3_lengths.txt"
-    echo "Sample    Reconstructed_Length" > "$CAP3_LENGTH_LOG"
-
+    # Header trimming
     for file in "$output_dir"/*_sequences.fasta; do
         base_name="${file%_sequences.fasta}"
         output_file="${base_name}_header.fasta"
@@ -57,17 +55,19 @@ function reconstruct() {
             match($0, /_([A-Za-z0-9]+\.[0-9]+):([0-9]+-[0-9]+)/, arr);
             if (arr[1] != "" && arr[2] != "")
                 print ">" arr[1] ":" arr[2];
-            else 
+            else
                 print $0;
         } !/^>/ { print }' "$file" > "$output_file"
         echo "Processed: $(basename "$file") -> $(basename "$output_file")"
     done
     echo "Header modification completed."
 
-    [ -n "$(ls "$output_dir"/*_header.fasta 2>/dev/null)" ] || { echo "No *_header.fasta files found."; exit 1; }
+    files=("$output_dir"/*_header.fasta)
+    [ -e "${files[0]}" ] || { echo "No *_header.fasta files found."; exit 1; }
 
     wrap_fasta_70 "$REFERENCE"
 
+    # Main loop: append or scaffold
     for FASTA in "$output_dir"/*_header.fasta; do
         echo "Processing: $FASTA"
         BASENAME=$(basename "$FASTA" "_header.fasta")
@@ -88,76 +88,37 @@ function reconstruct() {
             else
                 SEQUENCE=$(sed -n '2,$p' "$FASTA" | tr -d '\n')
             fi
-            echo "Appending direct sequence to CLEAN_FILE for sample: $BASE_NAME_ONLY"
-            {
-                [ -s "$QUERY_FILE" ] && echo ""
-                echo ">${BASE_NAME_ONLY}.fasta"
-                echo "$SEQUENCE" | fold -w 70
-            } >> "$QUERY_FILE"
         else
-            COMBINED="$Working_Directory/ref-plus-${BASE_NAME_ONLY}.fasta"
-            cat "$REFERENCE" "$FASTA" > "$COMBINED"
-            echo "Running CAP3: $COMBINED"
+            echo "Length <= $CutValue: running reference-guided scaffold"
+            SCAFFOLD_OUTPUT="$Working_Directory/${BASE_NAME_ONLY}_scaffolded.fasta"
+            run_analysis "$blast" "reference-guided scaffold" \
+                "python3 /opt/bin/python_scripts/scaffold_with_gaps.py '$REFERENCE' '$FASTA' '$SCAFFOLD_OUTPUT'"
+            sed -i "1s/.*/>${BASE_NAME_ONLY}.fasta/" "$SCAFFOLD_OUTPUT"
 
-            run_analysis "$cap3" "fragment reconstruction" "cap3 \"$COMBINED\" -m 60 -p 80 -o 40 -g 6 > out.txt"
-            run_analysis "$cap3" "consensus generation" "python3 /opt/bin/python_scripts/consensus.py"
-
-            SEQUENCE=""
-            if [ -s res.txt ]; then
-                consensus_headers=$(grep -c '^>' res.txt)
-                sed -i "1s/.*/>${BASE_NAME_ONLY}.fasta/" res.txt
-
-                if [ "$consensus_headers" -gt 1 ]; then
-                    echo "Warning: multiple consensus entries; using first."
-                    SEQUENCE=$(awk 'BEGIN{e=0}/^>/{if(e)exit;e=1;next}{print}' res.txt | tr -d '\n')
-                else
-                    SEQUENCE=$(sed -n '2,$p' res.txt | tr -d '\n')
-                fi
-            fi
-
-            if [ ! -s res.txt ] || [ -z "$SEQUENCE" ]; then
-                echo "Consensus failed (missing or empty), attempting scaffold_with_gaps reconstruction..."
-                SCAFFOLD_OUTPUT="$Working_Directory/${BASE_NAME_ONLY}_scaffolded.fasta"
-                run_analysis "$blast" "reference-guided scaffold" "python3 /opt/bin/python_scripts/scaffold_with_gaps.py \"$REFERENCE\" \"$FASTA\" \"$SCAFFOLD_OUTPUT\""
-                sed -i "1s/.*/>${BASE_NAME_ONLY}.fasta/" "$SCAFFOLD_OUTPUT"
-
-                if [ ! -s "$SCAFFOLD_OUTPUT" ]; then
-                    echo "Scaffolding also failed."
-                    echo ">${BASE_NAME_ONLY}.fasta" >> "$LEFTOVERS"
-                    echo "" >> "$LEFTOVERS"
-                    continue
-                fi
-
-                SEQUENCE=$(awk '!/^>/ { printf "%s", $0 }' "$SCAFFOLD_OUTPUT")
-                NEW_LEN=$(echo -n "$SEQUENCE" | wc -c)
-                echo "${BASE_NAME_ONLY}    ${NEW_LEN}" >> "$CAP3_LENGTH_LOG"
-
-                echo "Appending scaffolded sequence to CLEAN_FILE for sample: $BASE_NAME_ONLY"
-                {
-                    [ -s "$QUERY_FILE" ] && echo ""
-                    echo ">${BASE_NAME_ONLY}.fasta"
-                    echo "$SEQUENCE" | fold -w 70
-                } >> "$QUERY_FILE"
+            if [ ! -s "$SCAFFOLD_OUTPUT" ]; then
+                echo "Scaffolding failed; adding to leftovers."
+                echo ">${BASE_NAME_ONLY}.fasta" >> "$LEFTOVERS"
+                echo "" >> "$LEFTOVERS"
                 continue
             fi
 
-            NEW_LEN=$(echo -n "$SEQUENCE" | wc -c)
-            echo "${BASE_NAME_ONLY}    ${NEW_LEN}" >> "$CAP3_LENGTH_LOG"
-
-            echo "Appending consensus sequence to CLEAN_FILE for sample: $BASE_NAME_ONLY"
-            {
-                [ -s "$QUERY_FILE" ] && echo ""
-                echo ">${BASE_NAME_ONLY}.fasta"
-                echo "$SEQUENCE" | fold -w 70
-            } >> "$QUERY_FILE"
+            # Corrected awk to avoid backslash error
+            SEQUENCE=$(awk '!/^>/ { printf "%s", $0 }' "$SCAFFOLD_OUTPUT")
         fi
+
+        echo "Appending sequence to CLEAN_FILE for sample: $BASE_NAME_ONLY"
+        {
+            [ -s "$QUERY_FILE" ] && echo ""
+            echo ">${BASE_NAME_ONLY}.fasta"
+            echo "$SEQUENCE" | fold -w 70
+        } >> "$QUERY_FILE"
     done
 
+    # Cleanup and final wrapping
     sed -r "/^>/ { s/ /_/g; s/[;:'\",]//g; s/_+/_/g }" "$QUERY_FILE" > "$CLEAN_FILE"
 
     echo "Filtering short/empty sequences in $CLEAN_FILE..."
     TMP_FILE="${CLEAN_FILE}.tmp"; > "$TMP_FILE"
-
     {
         CURRENT_HEADER=""; CURRENT_SEQ=""
         while read -r LINE; do
@@ -165,7 +126,7 @@ function reconstruct() {
                 if [[ -n "$CURRENT_HEADER" ]]; then
                     if [[ -z "$CURRENT_SEQ" || ${#CURRENT_SEQ} -lt $THRESHOLD ]]; then
                         echo "$CURRENT_HEADER" >> "$LEFTOVERS"
-                        [ -n "$CURRENT_SEQ" ] && echo "$CURRENT_SEQ" >> "$LEFTOVERS"
+                        echo "$CURRENT_SEQ" >> "$LEFTOVERS"
                     else
                         echo "$CURRENT_HEADER" >> "$TMP_FILE"
                         echo "$CURRENT_SEQ" >> "$TMP_FILE"
@@ -176,35 +137,34 @@ function reconstruct() {
                 CURRENT_SEQ+="$LINE"
             fi
         done < "$CLEAN_FILE"
-        [[ -n "$CURRENT_HEADER" ]] && {
+        if [[ -n "$CURRENT_HEADER" ]]; then
             if [[ -z "$CURRENT_SEQ" || ${#CURRENT_SEQ} -lt $THRESHOLD ]]; then
                 echo "$CURRENT_HEADER" >> "$LEFTOVERS"
-                [ -n "$CURRENT_SEQ" ] && echo "$CURRENT_SEQ" >> "$LEFTOVERS"
+                echo "$CURRENT_SEQ" >> "$LEFTOVERS"
             else
                 echo "$CURRENT_HEADER" >> "$TMP_FILE"
                 echo "$CURRENT_SEQ" >> "$TMP_FILE"
             fi
-        }
+        fi
     }
-
     mv "$TMP_FILE" "$CLEAN_FILE"
 
     echo "Wrapping final FASTA outputs..."
     wrap_fasta_70 "$CLEAN_FILE"
     wrap_fasta_70 "$LEFTOVERS"
 
+    # Only print contamination warning if array non-empty
     if [ ${#contamination_files[@]} -gt 0 ]; then
         echo "WARNING: These files had high contamination:"
-        printf '%s\n' "${contamination_files[@]}"
+        printf '%s
+' "${contamination_files[@]}"
     fi
 
     echo "Cleaning up intermediate files..."
-    rm -f "$Working_Directory"/res.txt \
-          "$Working_Directory"/out.txt \
-          "$Working_Directory"/ref-plus* \
-          "$Working_Directory"/*.cap.* \
-          "$Working_Directory"/*scaffolded.fasta \
-          "$REFERENCE".{nhr,nin,nsq,ndb,not,nog,pal,phr,pin,psq}
+    rm -f "$Working_Directory"/*scaffolded.fasta \
+          "$Working_Directory"/blast_results.tsv \
+          "$Working_Directory"/scaffold_log.txt \
+          "$REFERENCE".{nhr,nin,nsq,ndb,not,nog,pal,phr,pin,psq,njs,ntf,nto}
 
     echo "Finished. Final: $CLEAN_FILE | Leftovers: $LEFTOVERS"
 }
