@@ -27,7 +27,7 @@ conda env create -f /path/to/download/blast2tree_environment.yml
 3) Set the script blast2tree to path
 do
 ```
- PWD
+ pwd
 ```
 to get the directory, followed by 
 ```
