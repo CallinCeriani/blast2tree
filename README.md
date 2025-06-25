@@ -5,9 +5,9 @@
 An experimental Linux pipeline optimized for haploid fungi, enabling rapid genus-level identification of multiple genomes with uncertain classification at a user-defined taxonomic level. Additionally, it extracts sequences of interest for manual review. Sequences should be single-copy and taxonomically informative.
 
 **Requires:**
-- Working conda or miniconda installation [miniconda](https://www.anaconda.com/download/success) (to make sure its update to date do `conda update -n base --all`)
+- Working conda or miniconda installation [miniconda](https://www.anaconda.com/download/success) (to make sure it's up to date, do `conda update -n base --all`)
 - A fasta file (.fa) with your reference markers (headers in default NCBI format) for each of the known species across your chosen classification level (e.g. ITS.fa)
-- A fasta file (.fa) containing a single sequence best representing the reference markers (i.e. the best hit marker after blast and extraction e.g. reference.fa)
+- A fasta file (.fa) containing a single sequence best representing the reference marker, if you are not sure, you can use the best hit marker after blast and extraction (e.g. reference.fa)
 - Assembled genomes in the .fasta or .fna format (e.g. isolate_100.fasta)
 
 **Utilizes:**
@@ -24,13 +24,18 @@ An experimental Linux pipeline optimized for haploid fungi, enabling rapid genus
 ```
 conda env create -f /path/to/download/blast2tree_environment.yml
 ```
-3) Set the script blast2tree.sh to path with
+3) Set the script blast2tree to path
+do
 ```
-echo 'export PATH="$PATH:/path/to/script/dir"' >> ~/.bashrc && source ~/.bashrc
+ PWD
 ```
-followed by
+to get the directory, followed by 
 ```
-chmod +x /path/to/blast2tree.sh
+ echo 'export PATH="$PATH:/path/to/script/dir"' >> ~/.bashrc && source ~/.bashrc
+```
+and then
+```
+chmod +x /path/to/blast2tree
 ```
 
 **To run:**
@@ -46,11 +51,11 @@ conda activate Blast2Tree
 blast2tree -h
 ```
 
-- To view your phylogenetic tree activate the conda environment and do
+- To view your phylogenetic tree, activate the Blast2Tree conda environment and do
 ```
 figtree
 ```
-After which to view the results, load in your .treefile found in the Out file
+After which, your results can be found in the .treefile in the _Out file
 
 ## Processing parameters
 
