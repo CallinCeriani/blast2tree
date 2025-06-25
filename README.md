@@ -43,7 +43,7 @@ conda activate Blast2Tree
   
 - To get the help menu do
 ```
-blast2tree.sh -h
+blast2tree -h
 ```
 
 - To view your phylogenetic tree activate the conda environment and do
