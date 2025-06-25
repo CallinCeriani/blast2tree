@@ -16,6 +16,7 @@ An experimental Linux pipeline optimized for haploid fungi, enabling rapid genus
 - [mafft](https://anaconda.org/bioconda/mafft)
 - [trimal](https://anaconda.org/bioconda/trimal)
 - [iqtree](https://anaconda.org/bioconda/iqtree)
+- [figtree](https://anaconda.org/bioconda/figtree)
 - [GNU Parallel](https://anaconda.org/conda-forge/parallel)
 
 ## How to install
