@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function build() {
-    echo "Now running Omega script!"
+    echo "Now running build script!"
     cd "$Working_Directory" || { echo "Failed to change directory"; exit 1; }
     
     # Directories
