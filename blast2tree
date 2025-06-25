@@ -35,8 +35,8 @@ Help() {
   echo
   echo -e "${BLUE}------------------------------- Phylogenetic functions ------------------------------${RESET}"
   echo
-  echo -e " Pre-trim & align reference|--Z                 "
-  echo -e " Build|--A                        Requires --K, --MARKER_NAME, --Input_seq, and yourmarker.fa. Blasts for and extracts the relevant hits."
+  echo -e " Pre-trim & align reference|--Z   Requires --Input_seq --MARKER_NAME, --Input_seq, and yourmarker(s).fa"
+  echo -e " Build|--A                        Requires --K, --MARKER_NAME, --Input_seq, and yourmarker(s).fa. Blasts for and extracts the relevant hits."
   echo -e " Extract|--B                      Requires --A. Determines the longest blast hit and extracts it. Choose the best hitting marker to become the reference.fa" 
   echo -e " Reconstruct|--C                  Requires --B, --CutValue, --THRESHOLD, a reference.fa. Reconstructs marker over separate contigs"
   echo -e " Tree|--D                         Requires --C. Constructs phylogenetic tree."
