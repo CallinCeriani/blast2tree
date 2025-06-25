@@ -40,9 +40,9 @@ function cleanmarkers()
     current_step=0
     
    cp $Input_seq $MARKER_NAME.copy.fa
-   run_analysis "$mafft" "mafft alignment" "eval mafft --adjustdirectionaccurately --threadtb $Cpus --threadit $Cpus --thread $Cpus --auto $Input_seq > $MARKER_NAME.prealigned.fa"
+   run_analysis "$blast2tree" "mafft alignment" "eval mafft --adjustdirectionaccurately --threadtb $Cpus --threadit $Cpus --thread $Cpus --auto $Input_seq > $MARKER_NAME.prealigned.fa"
    awk '/^>/ {print; next} {gsub("n", "N"); print}' $MARKER_NAME.prealigned.fa > temp && mv temp $MARKER_NAME.prealigned.fa
-   run_analysis "$trimal" "trimal" "trimal -keepheader -in $MARKER_NAME.prealigned.fa -out $MARKER_NAME.pretrimmed.fa -automated1"
+   run_analysis "$blast2tree" "trimal" "trimal -keepheader -in $MARKER_NAME.prealigned.fa -out $MARKER_NAME.pretrimmed.fa -automated1"
    awk '/^>/ {print; next} {gsub("-", "", $0); print}'  $MARKER_NAME.pretrimmed.fa >  $MARKER_NAME.fa
    rm -rf $MARKER_NAME.prealigned.fa $MARKER_NAME.pretrimmed.fa
 
