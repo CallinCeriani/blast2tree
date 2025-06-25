@@ -13,7 +13,6 @@ An experimental Linux pipeline optimized for haploid fungi, enabling rapid genus
 **Utilizes:**
 - [blast](https://anaconda.org/bioconda/blast) 
 - [bedtools](https://anaconda.org/bioconda/bedtools)
-- [cap3](https://anaconda.org/bioconda/cap3)
 - [mafft](https://anaconda.org/bioconda/mafft)
 - [trimal](https://anaconda.org/bioconda/trimal)
 - [iqtree](https://anaconda.org/bioconda/iqtree)
