@@ -91,7 +91,7 @@ function reconstruct() {
         else
             echo "Length <= $CutValue: running reference-guided scaffold"
             SCAFFOLD_OUTPUT="$Working_Directory/${BASE_NAME_ONLY}_scaffolded.fasta"
-            run_analysis "$blast" "reference-guided scaffold" \
+            run_analysis "$blast2tree" "reference-guided scaffold" \
                 "python3 $Sentral/python_scripts/scaffold_with_gaps.py '$REFERENCE' '$FASTA' '$SCAFFOLD_OUTPUT'"
             sed -i "1s/.*/>${BASE_NAME_ONLY}.fasta/" "$SCAFFOLD_OUTPUT"
 
