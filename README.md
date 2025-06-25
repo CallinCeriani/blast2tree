@@ -46,7 +46,7 @@ chmod +x /path/to/blast2tree
 conda activate Blast2Tree
 ```
   
-- To get the help menu do
+- To get the help menu, do
 ```
 blast2tree -h
 ```
