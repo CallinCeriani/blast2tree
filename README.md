@@ -17,6 +17,7 @@ An experimental Linux pipeline optimized for haploid fungi, enabling rapid genus
 - [trimal](https://anaconda.org/bioconda/trimal)
 - [iqtree](https://anaconda.org/bioconda/iqtree)
 - [figtree](https://anaconda.org/bioconda/figtree)
+- [biopython](https://anaconda.org/anaconda/biopython)
 - [GNU Parallel](https://anaconda.org/conda-forge/parallel)
 
 ## How to install
