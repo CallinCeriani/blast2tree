@@ -35,10 +35,11 @@ Help() {
   echo
   echo -e "${BLUE}------------------------------- Phylogenetic functions ------------------------------${RESET}"
   echo
-  echo -e " Build|--A                      Requires --K, --MARKER_NAME, --Input_seq, and yourmarker.fa. Creates blast_db for genomes, blasting and extracting the relevant hit."
-  echo -e " Extract|--B                    Requires --build. This determines the longest hit in .bed file and extracts it. Choose best hitting marker to become reference.fa" 
-  echo -e " Reconstruct|--C                Requires --extract, --CutValue, --THRESHOLD. Reconstructs marker over separate contigs. Requires reference.fa."
-  echo -e " Tree|--D                       Requires --reconstruct. This does alignment, trimming and constructs the tree."
+  echo -e " Pre-trim & align reference|--Z                 "
+  echo -e " Build|--A                        Requires --K, --MARKER_NAME, --Input_seq, and yourmarker.fa. Blasts for and extracts the relevant hits."
+  echo -e " Extract|--B                      Requires --A. Determines the longest blast hit and extracts it. Choose the best hitting marker to become the reference.fa" 
+  echo -e " Reconstruct|--C                  Requires --B, --CutValue, --THRESHOLD, a reference.fa. Reconstructs marker over separate contigs"
+  echo -e " Tree|--D                         Requires --C. Constructs phylogenetic tree."
   echo 
   echo -e "${BLUE}------------------------------- Utility functions -------------------------------${RESET}"
   echo
@@ -213,6 +214,10 @@ while [[ $# -gt 0 ]]; do
        CutValue="$2"
        refresh_configurations
        shift 2
+       ;;
+    --Z)  # Run build script
+       log_and_time "cleanmarkers" "$Log_DIR/$Logfile"
+       shift
        ;;
     --A)  # Run build script
        log_and_time "build" "$Log_DIR/$Logfile"

@@ -13,7 +13,6 @@ An experimental Linux pipeline optimized for haploid fungi, enabling rapid genus
 **Utilizes:**
 - [blast](https://anaconda.org/bioconda/blast) 
 - [bedtools](https://anaconda.org/bioconda/bedtools)
-- [cap3](https://anaconda.org/bioconda/cap3)
 - [mafft](https://anaconda.org/bioconda/mafft)
 - [trimal](https://anaconda.org/bioconda/trimal)
 - [iqtree](https://anaconda.org/bioconda/iqtree)
@@ -78,17 +77,20 @@ Run name|--s
 
 ## Analysis functions
 
+Pre-align & trim|--Z
+> Standardizes references markers before using them in blast search and downstream processing
+
 Build|--A
-> Creates blastdb for each genome and does a blast search against your provided reference markers (e.g. ITS.fa), extracting the relevant hit sequences.
+> Creates blastdb for each genome and does a blast search against your genomes using your provided reference markers (e.g. ITS.fa). Thereafter, it extracts the relevant hit sequences.
 
 Extract|--B
-> This determines the longest hit from your blast search and extracts it and any other shorter sequences related to the relative marker that produced the longest hit. After extraction determine the marker that had the best hit for your data and add it to a file called reference.fa with a unique header e.g. >best hit
+> This determines the longest hit from your blast search, and extracts it, and any other shorter sequences related to the relative marker that produced a hit. After extraction determine the marker that had the best hit for your data and add it to a file called reference.fa with a unique header e.g. >best hit
 
 Reconstruct|--C
-> If sequences are below the --THRESHOLD value, this script attempts to reconstruct these markers through overlapping sequences from separate contigs to improve their length. In addition, it filters the relevant hits in preparation for --tree.
+> If sequences are below the --THRESHOLD value, this script attempts to reconstruct these markers through overlapping sequences from separate contigs to improve their length. In addition, it filters the relevant hits in preparation for --tree. Recently added the ability to reconstruct markers that may not overlap or are of difference sense directionality
 
 Tree|--D
-> This does alignment, trimming, and construction of the phylogenetic tree.
+> This does alignment, trimming, and construction of a standard phylogenetic tree.
 
 ## Utility functions
 Rename contigs|--K
@@ -101,6 +103,6 @@ Make files|--M
 Those markers which have been reconstructed and meet the minimum length for comparison are often skewed to that of the reference marker from which they are reconstructed and should likely be removed from your dataset going forward. The Docker container/version of the code is still in development.
 
 ## How to uninstall
-> `conda remove -n Blast2Tree --all` 
-> `nano ~/.bashrc and remove set path`
-> `rm -rf /path/to/blast2tree-v0.0.1` 
+> To remove enviroment `conda remove -n Blast2Tree --all` 
+> To remove the pathing `nano ~/.bashrc`
+> To remove the downloaded program e.g. `rm -rf /path/to/blast2tree-v0.0.1` 

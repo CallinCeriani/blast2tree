@@ -42,6 +42,7 @@ function build() {
     rm -rf "$GENOME_DIR"/*.{ndb,nhr,nin,njs,not,nsq,ntf,nto,fai}  
 
     ##############################################
+    # Function: run_makeblastdb
     # Creates BLAST databases in parallel from genome files.
     ##############################################
 
@@ -76,6 +77,7 @@ run_blastdb_parallel() {
 }
     
     ##############################################
+    # Function: run_blast_search
     # Runs BLAST searches in parallel.
     ##############################################
 
@@ -119,7 +121,9 @@ run_blast_parallel() {
     echo "BLAST searches completed!"
 }
 
+ 
     ##############################################
+    # Function: run_convert_to_bed
     # Converts BLAST TSV results to BED format in parallel.
     ##############################################
     
@@ -156,7 +160,9 @@ Convert_bed() {
     echo "BED file conversion complete!"
 }
 
+
     ##############################################
+    # Function: run_extract_seq
     # Extracts sequences from genome files based on BED coordinates in parallel.
     ##############################################
 
@@ -219,9 +225,9 @@ run_extract_seq() {
     # Call each step via run_analysis, using the function name as a command string.
     ##############################################
     
-    run_analysis "$blast2tree" "make BLAST databases" "run_blastdb_parallel"
-    run_analysis "$blast2tree" "BLAST searches" "run_blast_parallel"
+    run_analysis "$blast" "make BLAST databases" "run_blastdb_parallel"
+    run_analysis "$blast" "BLAST searches" "run_blast_parallel"
     Convert_bed
-    run_analysis "$blast2tree" "Sequence extraction" "run_extract_seq"
+    run_analysis "$bedtools" "Sequence extraction" "run_extract_seq"
     echo "Process complete!"
 }
