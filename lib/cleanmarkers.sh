@@ -2,7 +2,7 @@
 
 function cleanmarkers()
 {
-   echo "Now running cleanmarkers script"
+   echo "Now running clean markers script"
    cd $Working_Directory
    
        directories=(
