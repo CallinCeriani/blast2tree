@@ -58,7 +58,7 @@ echo -e "  Working Directory: $Working_Directory"
 echo -e "  Sample Name:       $Input_name"
 echo -e "  Number of CPUs:    $Cpus"
 echo
-echo -e "                                   To get help do phylo1.sh --h"
+echo -e "                                   To get help do blast2tree --h"
 echo -e "${CYAN}==================================================================================${RESET}"
 }
 

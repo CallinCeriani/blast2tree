@@ -16,6 +16,7 @@ An experimental Linux pipeline optimized for haploid fungi, enabling rapid genus
 - [mafft](https://anaconda.org/bioconda/mafft)
 - [trimal](https://anaconda.org/bioconda/trimal)
 - [iqtree](https://anaconda.org/bioconda/iqtree)
+- [figtree](https://anaconda.org/bioconda/figtree)
 - [GNU Parallel](https://anaconda.org/conda-forge/parallel)
 
 ## How to install
@@ -92,7 +93,7 @@ Extract|--B
 > This determines the longest hit from your blast search, and extracts it, and any other shorter sequences related to the relative marker that produced a hit. After extraction, determine the marker that had the best hit for your data and add it to a file called reference.fa with a unique header, e.g. >best hit
 
 Reconstruct|--C
-> If sequences are below the --THRESHOLD value, this script attempts to reconstruct these markers through overlapping sequences from separate contigs to improve their length. In addition, it filters the relevant hits in preparation for --tree. Recently added the ability to reconstruct markers that may not overlap or are of difference sense directionality
+> If sequences are below the --THRESHOLD value, this script attempts to reconstruct these markers through both overlapping and non-overlapping sequences from separate contigs, regardless of directionality, to improve their length. In addition, it filters the relevant hits in preparation for --tree. 
 
 Tree|--D
 > This does alignment, trimming, and construction of a standard phylogenetic tree.

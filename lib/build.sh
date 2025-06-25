@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function build() {
-    echo "Now running Omega script!"
+    echo "Now running build script!"
     cd "$Working_Directory" || { echo "Failed to change directory"; exit 1; }
     
     # Directories
@@ -225,9 +225,9 @@ run_extract_seq() {
     # Call each step via run_analysis, using the function name as a command string.
     ##############################################
     
-    run_analysis "$blast" "make BLAST databases" "run_blastdb_parallel"
-    run_analysis "$blast" "BLAST searches" "run_blast_parallel"
+    run_analysis "$blast2tree" "make BLAST databases" "run_blastdb_parallel"
+    run_analysis "$blast2tree" "BLAST searches" "run_blast_parallel"
     Convert_bed
-    run_analysis "$bedtools" "Sequence extraction" "run_extract_seq"
+    run_analysis "$blast2tree" "Sequence extraction" "run_extract_seq"
     echo "Process complete!"
 }
